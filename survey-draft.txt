@@ -1,0 +1,88 @@
+STATE 618｜移民意願調查草稿
+
+【基本資料】
+1. 遊戲名稱 / Player Name ＊
+2. Player ID ＊
+3. 目前州 / Current State ＊
+4. 目前聯盟 / Current Alliance
+
+【戰力概況】
+5. 總戰力 / Total Power ＊
+
+6. 擊殺數 / Kills
+
+7. 主力兵種 / Main Troop Type
+題型：下拉選單
+   - 勇士
+   - 射手
+   - 騎兵
+
+8.瞭望塔等級
+　　題型：下拉選單
+   - 24
+   - 25
+   - 26
+   - 27
+   - 28
+   - 29
+   - 30
+   - 工業1
+   - 工業2
+   - 工業3
+   - 工業4
+   - 工業5
+
+【移民意願】
+9. 你目前對移民 618 的意願？＊
+　　題型：下拉選單
+   - 確定想來
+   - 高度考慮
+   - 想先了解
+
+10. 預計幾個人一起來？
+　　題型：下拉選單
+   - 自己
+   - 2–5 人
+   - 6–10 人
+   - 10+ 人／整團
+   
+   - 618伺服器推薦人(選填)
+
+11. 希望加入的 618 聯盟 / Preferred Alliance
+　　題型：下拉選單
+   - [RZN] Risen
+   - [3311] 青丘寨
+   - [RoD!] Reign of Dragons
+   - [RAW$] War Dominion
+   - [UNQ.] UNQUESTIONED
+   - [KNT] Knights of Round
+   - [WofA] Wolves of Anarchy
+   - [S_B] Storm Bringers
+   - [RnB] ReBoRN BiO
+   - [TCB] VenomousSlayers
+   - 不限 / No preference
+   - 尚未決定 / Not sure yet
+
+【活動與適配】
+12. 平常活躍時段(填寫伺服器時間)
+
+13. 對聯盟／州活動參與程度
+   - 積極參與(每個活動都參與)
+   - 活躍
+   - 普通
+   - 偶而
+   - 幾乎沒有
+
+14. 是否曾擔任聯盟管理
+　　題型：下拉選單
+   - R5
+   - R4
+   - 無
+
+【補充】
+15. 想了解 618 的哪些事情？
+   - NAP／州規
+   - 各聯盟特色
+   - 其他
+
+16. 想補充的話／備註

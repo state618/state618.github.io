@@ -60,9 +60,9 @@
         <label>主力兵種 / Main Troop Type
           <select name="main_troop">
             <option value="">請選擇 / Select</option>
-            <option>勇士</option>
-            <option>射手</option>
-            <option>騎兵</option>
+            <option value="勇士">勇士 / Warrior</option>
+            <option value="射手">射手 / Shooter</option>
+            <option value="騎兵">騎兵 / Rider</option>
           </select>
         </label>
 
@@ -71,7 +71,7 @@
             <option value="">請選擇 / Select</option>
             <option>24</option><option>25</option><option>26</option><option>27</option>
             <option>28</option><option>29</option><option>30</option>
-            <option>工業1</option><option>工業2</option><option>工業3</option><option>工業4</option><option>工業5</option>
+            <option value="工業1">工業1 / Industrial 1</option><option value="工業2">工業2 / Industrial 2</option><option value="工業3">工業3 / Industrial 3</option><option value="工業4">工業4 / Industrial 4</option><option value="工業5">工業5 / Industrial 5</option>
           </select>
         </label>
       </fieldset>
@@ -79,26 +79,26 @@
       <fieldset>
         <legend><span>03</span> 移民意願 / Migration Interest</legend>
 
-        <label>你目前對移民 618 的意願？ <b>*</b>
+        <label>你目前對移民 618 的意願？ / Interest in Migrating to State 618 <b>*</b>
           <select name="interest" required>
             <option value="">請選擇 / Select</option>
-            <option>確定想來</option>
-            <option>高度考慮</option>
-            <option>想先了解</option>
+            <option value="確定想來">確定想來 / Definitely interested</option>
+            <option value="高度考慮">高度考慮 / Strongly considering</option>
+            <option value="想先了解">想先了解 / Want to learn more</option>
           </select>
         </label>
 
-        <label>預計幾個人一起來？
+        <label>預計同行人數 / Expected Group Size
           <select name="group_size">
             <option value="">請選擇 / Select</option>
-            <option>自己</option>
-            <option>2–5 人</option>
-            <option>6–10 人</option>
-            <option>10+ 人／整團</option>
+            <option value="自己">自己 / Solo</option>
+            <option value="2–5 人">2–5 人 / 2–5 players</option>
+            <option value="6–10 人">6–10 人 / 6–10 players</option>
+            <option value="10+ 人／整團">10+ 人／整團 / 10+ players or full group</option>
           </select>
         </label>
 
-        <label>618 伺服器推薦人（選填）
+        <label>618 伺服器推薦人（選填） / State 618 Referrer (Optional)
           <input type="text" name="referrer">
         </label>
 
@@ -124,27 +124,27 @@
       <fieldset>
         <legend><span>04</span> 活動與適配 / Activity</legend>
 
-        <label>平常活躍時段（填寫伺服器時間）
+        <label>平常活躍時段（伺服器時間） / Usual Active Hours (Server Time)
           <input type="text" name="active_time" placeholder="例如 / e.g. 12:00–16:00">
         </label>
 
-        <label>對聯盟／州活動參與程度
+        <label>對聯盟／州活動參與程度 / Alliance &amp; State Event Participation
           <select name="activity_level">
             <option value="">請選擇 / Select</option>
-            <option>積極參與（每個活動都參與）</option>
-            <option>活躍</option>
-            <option>普通</option>
-            <option>偶爾</option>
-            <option>幾乎沒有</option>
+            <option value="積極參與（每個活動都參與）">積極參與（每個活動都參與） / Highly active (join every event)</option>
+            <option value="活躍">活躍 / Active</option>
+            <option value="普通">普通 / Moderate</option>
+            <option value="偶爾">偶爾 / Occasionally</option>
+            <option value="幾乎沒有">幾乎沒有 / Rarely</option>
           </select>
         </label>
 
-        <label>是否曾擔任聯盟管理
+        <label>是否曾擔任聯盟管理 / Alliance Management Experience
           <select name="management">
             <option value="">請選擇 / Select</option>
             <option>R5</option>
             <option>R4</option>
-            <option>無</option>
+            <option value="無">無 / None</option>
           </select>
         </label>
       </fieldset>
@@ -152,23 +152,23 @@
       <fieldset>
         <legend><span>05</span> 補充 / More</legend>
 
-        <div class="field-label">想了解 618 的哪些事情？</div>
+        <div class="field-label">想了解 618 的哪些事情？ / What would you like to know about State 618?</div>
         <div class="checks">
-          <label><input type="checkbox" name="questions" value="NAP／州規"> NAP／州規</label>
-          <label><input type="checkbox" name="questions" value="各聯盟特色"> 各聯盟特色</label>
-          <label><input type="checkbox" name="questions" value="其他"> 其他</label>
+          <label><input type="checkbox" name="questions" value="NAP／州規"> NAP／州規 / NAP &amp; State Rules</label>
+          <label><input type="checkbox" name="questions" value="各聯盟特色"> 各聯盟特色 / Alliance Profiles</label>
+          <label><input type="checkbox" name="questions" value="其他"> 其他 / Other</label>
         </div>
 
-        <label>想補充的話／備註
+        <label>想補充的話／備註 / Additional Notes
           <textarea name="notes" rows="5"></textarea>
         </label>
       </fieldset>
 
       <div class="submit-area">
-        <button class="primary submit-button" id="submit-button" type="submit">Submit application</button>
+        <button class="primary submit-button" id="submit-button" type="submit">送出申請 / Submit Application</button>
         <p>
-          送出後可使用 Player ID 查詢申請進度。<br>
-          請耐心等候專人通知；若有指定聯盟，後續將由該聯盟管理人員聯繫安排面試／審核。
+          After submitting, use your Player ID to check your application status and wait patiently for further contact.<br>
+          送出後可使用 Player ID 查詢申請進度，並請耐心等候專人通知；若有指定聯盟，後續將由該聯盟管理人員聯繫安排面試／審核。
         </p>
         <p id="submit-result" class="submit-result"></p>
       </div>
@@ -182,6 +182,6 @@
   <footer class="site-footer">
     <span>STATE 618</span><span class="dot">•</span><span>Migration Interest</span>
   </footer>
-  <script src="site.js?v=20261015-1141"></script>
+  <script src="site.js?v=20261015-1225"></script>
 </body>
 </html>

@@ -19,8 +19,8 @@ function setSubmitMessage(text, type = '') {
 
   if (!backendReady) {
     button.disabled = true;
-    button.textContent = 'Backend not connected';
-    setSubmitMessage('資料後台尚未連線。', 'muted');
+    button.textContent = '後台未連線 / Backend not connected';
+    setSubmitMessage('資料後台尚未連線。 / Backend is not connected.', 'muted');
     return;
   }
 
@@ -31,8 +31,8 @@ function setSubmitMessage(text, type = '') {
   form.addEventListener('submit', () => {
     waitingForResponse = true;
     button.disabled = true;
-    button.textContent = 'Submitting...';
-    setSubmitMessage('正在送出申請，請稍候…', 'muted');
+    button.textContent = '送出中... / Submitting...';
+    setSubmitMessage('正在送出申請，請稍候… / Submitting your application, please wait…', 'muted');
   });
 
   frame.addEventListener('load', () => {
@@ -40,9 +40,9 @@ function setSubmitMessage(text, type = '') {
     waitingForResponse = false;
     form.reset();
     button.disabled = false;
-    button.textContent = 'Submit application';
+    button.textContent = '送出申請 / Submit Application';
     setSubmitMessage(
-      'Application received. 請使用 Player ID 查詢進度，並耐心等候專人通知。',
+      '已收到申請 / Application received. 請使用 Player ID 查詢進度，並耐心等候專人通知。',
       'success'
     );
   });
@@ -57,22 +57,22 @@ function setSubmitMessage(text, type = '') {
 
   if (!backendReady) {
     button.disabled = true;
-    button.textContent = 'Backend not connected';
+    button.textContent = '後台未連線 / Backend not connected';
     return;
   }
 
   button.disabled = false;
-  button.textContent = 'Check status';
+  button.textContent = '查詢進度 / Check Status';
 
   button.addEventListener('click', async () => {
     const playerId = input.value.trim();
     if (!playerId) {
-      renderStatusError('請先輸入 Player ID。');
+      renderStatusError('請先輸入 Player ID。 / Please enter your Player ID.');
       return;
     }
 
     button.disabled = true;
-    button.textContent = 'Checking...';
+    button.textContent = '查詢中... / Checking...';
 
     try {
       const response = await fetch(
@@ -88,27 +88,27 @@ function setSubmitMessage(text, type = '') {
       renderStatus(data);
     } catch (error) {
       console.error('Status lookup failed:', error);
-      renderStatusError('查詢連線失敗，請重新整理頁面後再試。');
+      renderStatusError('查詢連線失敗，請重新整理頁面後再試。 / Connection failed. Please refresh and try again.');
     } finally {
       button.disabled = false;
-      button.textContent = 'Check status';
+      button.textContent = '查詢進度 / Check Status';
     }
   });
 
   function renderStatus(data) {
     if (!data || !data.ok) {
-      renderStatusError((data && data.message) || '找不到這筆申請。');
+      renderStatusError((data && data.message) || '找不到這筆申請。 / Application not found.');
       return;
     }
 
     result.hidden = false;
     result.innerHTML = [
       row('Player ID', escapeHtml(data.playerId)),
-      row('Player', escapeHtml(data.playerName)),
-      row('Preferred Alliance', escapeHtml(data.preferredAlliance || '—')),
-      row('Status', '<span class="badge ' + statusClass(data.status) + '">' + escapeHtml(statusLabel(data.status)) + '</span>'),
-      row('Submitted', escapeHtml(data.submittedAt || '—')),
-      row('Last updated', escapeHtml(data.lastUpdated || '—')),
+      row('玩家名稱 / Player', escapeHtml(data.playerName)),
+      row('希望聯盟 / Preferred Alliance', escapeHtml(data.preferredAlliance || '—')),
+      row('狀態 / Status', '<span class="badge ' + statusClass(data.status) + '">' + escapeHtml(statusLabel(data.status)) + '</span>'),
+      row('送出時間 / Submitted', escapeHtml(data.submittedAt || '—')),
+      row('最後更新 / Last Updated', escapeHtml(data.lastUpdated || '—')),
       '<div class="status-note">' + escapeHtml(statusMessage(data.status)) + '</div>'
     ].join('');
   }

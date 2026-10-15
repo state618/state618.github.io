@@ -167,3 +167,52 @@ function escapeHtml(value) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
+
+(function setupBackgroundMusic() {
+  const audio = document.getElementById('site-bgm');
+  if (!audio) return;
+
+  const STORAGE_KEY = 'state618_bgm_time';
+  audio.volume = 0.28;
+  audio.loop = true;
+
+  const savedTime = Number(sessionStorage.getItem(STORAGE_KEY));
+  if (Number.isFinite(savedTime) && savedTime > 0) {
+    const restoreTime = () => {
+      const duration = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : null;
+      audio.currentTime = duration ? savedTime % duration : savedTime;
+    };
+    if (audio.readyState >= 1) restoreTime();
+    else audio.addEventListener('loadedmetadata', restoreTime, { once: true });
+  }
+
+  const saveTime = () => {
+    if (Number.isFinite(audio.currentTime)) {
+      sessionStorage.setItem(STORAGE_KEY, String(audio.currentTime));
+    }
+  };
+
+  window.addEventListener('pagehide', saveTime);
+  setInterval(saveTime, 1000);
+
+  const tryPlay = () => {
+    const promise = audio.play();
+    if (promise && typeof promise.catch === 'function') {
+      promise.catch(() => {});
+    }
+  };
+
+  tryPlay();
+
+  const unlockAudio = () => {
+    tryPlay();
+    document.removeEventListener('pointerdown', unlockAudio, true);
+    document.removeEventListener('keydown', unlockAudio, true);
+    document.removeEventListener('touchstart', unlockAudio, true);
+  };
+
+  document.addEventListener('pointerdown', unlockAudio, true);
+  document.addEventListener('keydown', unlockAudio, true);
+  document.addEventListener('touchstart', unlockAudio, true);
+})();

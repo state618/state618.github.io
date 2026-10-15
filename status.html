@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#211522">
   <title>STATE 618 | Check Application Status</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="form.css">
+  <link rel="stylesheet" href="form.css?v=20261015-1245">
 </head>
 <body class="form-page">
   <header class="form-topbar">
@@ -29,6 +29,17 @@
       <label>Player ID
         <input type="text" id="player-id" placeholder="輸入你的 Player ID">
       </label>
+
+      <details class="id-help">
+        <summary>找不到 Player ID？ / Where can I find it?</summary>
+        <div class="id-help-body">
+          <p>打開遊戲內的「帳號」頁面，找到標示為「ID」的欄位；紅框中的數字就是 Player ID。</p>
+          <div class="id-mini-card">
+            <div>帳號 / Account</div>
+            <div class="id-mini-row">ID <strong>1234567890</strong></div>
+          </div>
+        </div>
+      </details>
 
       <button class="primary status-button" id="check-status-button" type="button">
         查詢進度 / Check Status

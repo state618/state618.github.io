@@ -362,3 +362,75 @@ h1 {
 
   .card-no { margin-bottom: 24px; }
 }
+
+/* Halloween seasonal accents */
+.halloween-art {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.web-art {
+  top: 76px;
+  right: -34px;
+  width: min(31vw, 420px);
+  opacity: .32;
+  transform: rotate(2deg);
+}
+
+.bats-art {
+  top: 18%;
+  right: 5%;
+  width: min(19vw, 250px);
+  opacity: .58;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,.28));
+}
+
+.pumpkin-art {
+  right: 3.5%;
+  bottom: 2.5%;
+  width: min(12vw, 155px);
+  opacity: .86;
+  filter: drop-shadow(0 10px 26px rgba(0,0,0,.36));
+}
+
+.draft-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.spider-art {
+  top: 24px;
+  right: 5%;
+  width: min(8vw, 92px);
+  opacity: .72;
+}
+
+@media (max-width: 760px) {
+  .web-art {
+    width: 210px;
+    right: -75px;
+    opacity: .22;
+  }
+
+  .bats-art {
+    top: 13%;
+    right: -24px;
+    width: 150px;
+    opacity: .38;
+  }
+
+  .pumpkin-art {
+    width: 90px;
+    right: 10px;
+    bottom: 52px;
+    opacity: .72;
+  }
+
+  .spider-art {
+    width: 58px;
+    right: 12px;
+    opacity: .58;
+  }
+}

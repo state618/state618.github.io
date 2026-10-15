@@ -365,3 +365,29 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
+.id-help-body {
+  display: block;
+}
+
+.id-guide-link {
+  display: block;
+  margin-top: 12px;
+}
+
+.id-guide-image {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 10px 28px rgba(0,0,0,.24);
+}
+
+.id-guide-note {
+  margin-top: 8px !important;
+  text-align: center;
+  color: #9f98a7 !important;
+  font-size: 11px !important;
+}

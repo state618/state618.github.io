@@ -73,14 +73,14 @@
 
   const profiles={
     sample:{
-      name:'SamplePlayer',status:'Received',zh:'\u5df2\u6536\u5230',en:'Received',
+      name:'SamplePlayer',status:'Under Review',zh:'\u5be9\u6838\u4e2d',en:'Under Review',
       values:['1234567890','621','EXM','245M','3.2M',{zh:'\u52c7\u58eb',en:'Warrior'},{zh:'\u5de5\u696d2',en:'Industrial 2'},{zh:'\u78ba\u5b9a\u60f3\u4f86',en:'Definitely interested'},{zh:'2\u20135 \u4eba',en:'2\u20135 players'},{zh:'\u7a4d\u6975\u53c3\u8207',en:'Highly active'},'R4','05ST\u201309ST'],
       groupPending:true,
       notes:'',
       history:[]
     },
     night:{
-      name:'NightScout',status:'Awaiting Interview',zh:'\u7b49\u5019\u9762\u8a66',en:'Awaiting Interview',
+      name:'NightScout',status:'Under Review',zh:'\u5be9\u6838\u4e2d',en:'Under Review',
       values:['9876543210','624','NXT','301M','4.8M',{zh:'\u5c04\u624b',en:'Shooter'},{zh:'\u5de5\u696d3',en:'Industrial 3'},{zh:'\u78ba\u5b9a\u60f3\u4f86',en:'Definitely interested'},{zh:'\u55ae\u4eba',en:'Solo'},{zh:'\u7a4d\u6975\u53c3\u8207',en:'Highly active'},'R4','10ST\u201315ST'],
       groupPending:false,
       notes:'',
@@ -111,7 +111,7 @@
     if(nameEl)nameEl.textContent=p.name;
     const badge=detail.querySelector('#detail-status-badge');
     if(badge){
-      badge.className='badge '+(p.status==='Received'?'received':p.status==='Awaiting Interview'?'interview':'reviewing');
+      badge.className='badge '+(p.status==='Approved'?'approved':p.status==='Waitlist'?'waitlist':p.status==='Declined'?'declined':'reviewing');
       badge.dataset.i18nZh=p.zh;
       badge.dataset.i18nEn=p.en;
       const mode=lang();
@@ -214,8 +214,6 @@
 
       if(newStatus!==p.status){
         const statusZh={
-          'Received':'已收到',
-          'Awaiting Interview':'等候面試',
           'Under Review':'審核中',
           'Approved':'已通過',
           'Waitlist':'候補',

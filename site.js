@@ -28,23 +28,68 @@ function setSubmitMessage(text, type = '') {
   form.method = 'POST';
   form.target = 'submit-frame';
 
-  form.addEventListener('submit', () => {
+  let submittedPlayerId = '';
+
+  form.addEventListener('submit', (event) => {
+    const groupSize = String(form.elements.group_size?.value || '').trim();
+    const groupCode = String(form.elements.group_code?.value || '').trim();
+    const currentAlliance = String(form.elements.current_alliance?.value || '').trim();
+
+    if (groupSize && groupSize !== '自己' && !groupCode && !currentAlliance) {
+      event.preventDefault();
+      form.elements.current_alliance?.focus();
+      setSubmitMessage(
+        '揪團者需要填寫目前聯盟，系統才可以產生「聯盟代碼 + 流水號」邀請碼。 / Group organizers must enter their current alliance so a group code can be generated.',
+        'error'
+      );
+      return;
+    }
+
+    submittedPlayerId = String(form.elements.player_id?.value || '').trim();
     waitingForResponse = true;
     button.disabled = true;
     button.textContent = '送出中... / Submitting...';
     setSubmitMessage('正在送出申請，請稍候… / Submitting your application, please wait…', 'muted');
   });
 
-  frame.addEventListener('load', () => {
+  frame.addEventListener('load', async () => {
     if (!waitingForResponse) return;
     waitingForResponse = false;
-    form.reset();
     button.disabled = false;
     button.textContent = '送出申請 / Submit Application';
-    setSubmitMessage(
-      '已收到申請 / Application received. 請使用 Player ID 查詢進度，並耐心等候專人通知。',
-      'success'
-    );
+
+    let successHtml = '已收到申請 / Application received. 請使用 Player ID 查詢進度，並耐心等候專人通知。';
+
+    try {
+      if (submittedPlayerId) {
+        const response = await fetch(
+          WEB_APP_URL + '?playerId=' + encodeURIComponent(submittedPlayerId) + '&_=' + Date.now(),
+          { method: 'GET', cache: 'no-store' }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.ok && data.groupCode) {
+            const shareUrl = new URL('apply.html', window.location.href);
+            shareUrl.searchParams.set('group', data.groupCode);
+            successHtml =
+              '已收到申請 / Application received.<br>' +
+              '<strong>團隊邀請碼 / Group Invite Code：' + escapeHtml(data.groupCode) + '</strong><br>' +
+              '請把這組邀請碼或下方連結分享給同行成員，每位成員都要各自填寫申請。<br>' +
+              '<a href="' + escapeHtml(shareUrl.href) + '">' + escapeHtml(shareUrl.href) + '</a>';
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Group code lookup failed:', error);
+    }
+
+    form.reset();
+    const result = document.getElementById('submit-result');
+    if (result) {
+      result.innerHTML = successHtml;
+      result.className = 'submit-result success';
+    }
+    submittedPlayerId = '';
   });
 })();
 
@@ -106,6 +151,7 @@ function setSubmitMessage(text, type = '') {
       row('Player ID', escapeHtml(data.playerId)),
       row('玩家名稱 / Player', escapeHtml(data.playerName)),
       row('希望聯盟 / Preferred Alliance', escapeHtml(data.preferredAlliance || '—')),
+      data.groupCode ? row('團隊邀請碼 / Group Invite Code', escapeHtml(data.groupCode)) : '',
       row('狀態 / Status', '<span class="badge ' + statusClass(data.status) + '">' + escapeHtml(statusLabel(data.status)) + '</span>'),
       row('送出時間 / Submitted', escapeHtml(data.submittedAt || '—')),
       row('最後更新 / Last Updated', escapeHtml(data.lastUpdated || '—')),

@@ -483,3 +483,11 @@ textarea {
 .group-code-field input:not(:placeholder-shown){
   border-color:rgba(200,137,184,.46);
 }
+
+.submit-result.success a{
+  display:inline-block;
+  margin-top:8px;
+  color:#ead0df;
+  word-break:break-all;
+}
+.submit-result.error{color:#e3b8bd}

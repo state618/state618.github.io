@@ -14,32 +14,32 @@
 
   <header class="manager-topbar">
     <a class="manager-brand" href="index.html">STATE <span>618</span></a>
-    <div class="manager-mode"><span class="status-dot"></span> Alliance Management · Secure Access</div>
+    <div class="manager-mode"><span class="status-dot"></span> 聯盟管理後台 <small>Alliance Management</small></div>
   </header>
 
   <main class="manager-shell">
     <section class="manager-login" id="manager-login">
       <div class="login-copy">
-        <div class="section-kicker">ALLIANCE MANAGEMENT · 聯盟管理</div>
-        <h1>Migration Review<br>Console</h1>
-        <p class="zh-title">移民審核後台</p>
-        <p class="manager-intro">
-          Authorized alliance managers can review only the applications assigned to their own alliance.
-        </p>
+        <div class="section-kicker">聯盟管理 · ALLIANCE MANAGEMENT</div>
+        <h1>移民申請<br>審核後台</h1>
+        <p class="zh-title">Migration Review Console</p>
         <p class="manager-intro zh">
           聯盟管理者登入後，只會看到指定自己聯盟的申請資料。
         </p>
+        <p class="manager-intro en">
+          Authorized alliance managers can review only applications assigned to their own alliance.
+        </p>
 
         <div class="privacy-note">
-          <strong>Alliance-scoped access</strong>
-          <span>Applicants from other alliances will not be shown.</span>
-          <small>各聯盟資料彼此隔離，不顯示其他聯盟申請者。</small>
+          <strong>聯盟資料獨立顯示</strong>
+          <span>只顯示指定此聯盟的申請者。</span>
+          <small>Alliance-scoped access · Applicants from other alliances will not be shown.</small>
         </div>
       </div>
 
       <form class="access-card" id="manager-access-form">
         <div class="access-card-head">
-          <span>MANAGER ACCESS</span>
+          <span>管理者登入 · MANAGER ACCESS</span>
           <span class="lock-mark">◆</span>
         </div>
 
@@ -64,37 +64,37 @@
         </label>
 
         <button class="manager-login-button" type="submit">進入管理後台 / Open Dashboard</button>
-        <p class="access-message" id="access-message">Only authorized alliance management accounts may enter.</p>
+        <p class="access-message" id="access-message">僅限授權的聯盟管理者使用。 / Authorized managers only.</p>
       </form>
     </section>
 
     <section class="dashboard demo-dashboard" id="demo-dashboard" hidden>
-      <div class="demo-ribbon">PREVIEW MODE · DEMO DATA</div>
+      <div class="demo-ribbon">預覽模式 · DEMO DATA</div>
 
       <div class="dashboard-head">
         <div>
-          <div class="section-kicker">ALLIANCE DASHBOARD</div>
+          <div class="section-kicker">聯盟審核台 · ALLIANCE DASHBOARD</div>
           <h2><span id="demo-alliance-tag">RoD!</span> · <span id="demo-alliance-name">Reign of Dragons</span></h2>
-          <p>Migration application review queue / 移民申請審核佇列</p>
+          <p>移民申請審核佇列 <small>Migration application review queue</small></p>
         </div>
-        <button class="ghost-button" id="exit-preview" type="button">← Back to Login</button>
+        <button class="ghost-button" id="exit-preview" type="button">← 返回登入 / Back</button>
       </div>
 
       <div class="metric-grid">
         <article class="metric">
-          <span>New / 新申請</span>
+          <span>新申請 <small>New</small></span>
           <strong>1</strong>
         </article>
         <article class="metric">
-          <span>Interview / 等候面試</span>
+          <span>等候面試 <small>Interview</small></span>
           <strong>2</strong>
         </article>
         <article class="metric">
-          <span>Review / 審核中</span>
+          <span>審核中 <small>Review</small></span>
           <strong>1</strong>
         </article>
         <article class="metric">
-          <span>Approved / 已通過</span>
+          <span>已通過 <small>Approved</small></span>
           <strong>4</strong>
         </article>
       </div>
@@ -103,33 +103,33 @@
         <section class="queue-panel">
           <div class="panel-head">
             <div>
-              <span class="panel-label">APPLICATION QUEUE</span>
-              <h3>申請清單</h3>
+              <span class="panel-label">申請清單</span>
+              <h3>待處理申請 <small>Application Queue</small></h3>
             </div>
             <select class="queue-filter" aria-label="Filter applications">
-              <option>All Status</option>
-              <option>Received</option>
-              <option>Awaiting Interview</option>
-              <option>Under Review</option>
+              <option>全部狀態 / All</option>
+              <option>已收到 / Received</option>
+              <option>等候面試 / Awaiting Interview</option>
+              <option>審核中 / Under Review</option>
             </select>
           </div>
 
           <button class="applicant-card active" type="button">
             <div class="applicant-top">
               <strong>SamplePlayer</strong>
-              <span class="badge received">Received</span>
+              <span class="badge received">已收到 / Received</span>
             </div>
-            <div class="applicant-meta">State 621 · EXM · 245M Power</div>
+            <div class="applicant-meta">621州 · EXM · 戰力 245M</div>
             <div class="applicant-bottom">
-              <span>Industrial 2 · Warrior</span>
-              <span>Group 2–5</span>
+              <span>工業2 · 勇士</span>
+              <span>同行 2–5 人</span>
             </div>
           </button>
 
           <button class="applicant-card" type="button">
             <div class="applicant-top">
               <strong>NightScout</strong>
-              <span class="badge interview">Awaiting Interview</span>
+              <span class="badge interview">等候面試 / Awaiting Interview</span>
             </div>
             <div class="applicant-meta">State 624 · NXT · 301M Power</div>
             <div class="applicant-bottom">

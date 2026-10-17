@@ -57,7 +57,7 @@
     dashboard.hidden=true;
     login.hidden=false;
     key.value='';
-    message.textContent='Only authorized alliance management accounts may enter.';
+    message.textContent='僅限授權的聯盟管理者使用。 / Authorized managers only.';
     message.className='access-message';
     window.scrollTo({top:0,behavior:'smooth'});
   });

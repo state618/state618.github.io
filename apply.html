@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#211522">
   <title>STATE 618 | Migration Interest Survey</title>
   <link rel="stylesheet" href="styles.css?v=20261017-2245">
-  <link rel="stylesheet" href="form.css?v=20261018-0345">
+  <link rel="stylesheet" href="form.css?v=20261018-0410">
 </head>
 <body class="form-page">
   <header class="form-topbar">
@@ -107,15 +107,21 @@
           </select>
         </label>
 
-        <label>預計同行人數 / Expected Group Size
-          <select name="group_size">
+        <label id="group-size-field">預計同行人數 / Expected Group Size
+          <select name="group_size" id="group-size">
             <option value="">請選擇 / Select</option>
             <option value="自己">自己 / Solo</option>
             <option value="2–5 人">2–5 人 / 2–5 players</option>
             <option value="6–10 人">6–10 人 / 6–10 players</option>
             <option value="10+ 人／整團">10+ 人／整團 / 10+ players or full group</option>
           </select>
+          <small class="field-help" data-i18n-zh="選擇多人同行後，送出申請時會自動產生團隊邀請碼。" data-i18n-en="If you select a group size, a group invite code will be generated after submission.">選擇多人同行後，送出申請時會自動產生團隊邀請碼。 / If you select a group size, a group invite code will be generated after submission.</small>
         </label>
+
+        <div id="group-member-note" class="group-member-note" hidden>
+          <strong data-i18n-zh="已使用團隊邀請碼" data-i18n-en="Group invite code detected">已使用團隊邀請碼 / Group invite code detected</strong>
+          <span data-i18n-zh="同行人數以揪團者的申請為準，你不需要再次選擇。" data-i18n-en="Group size is taken from the organizer's application, so you do not need to select it again.">同行人數以揪團者的申請為準，你不需要再次選擇。 / Group size is taken from the organizer's application.</span>
+        </div>
 
         <label>618 伺服器推薦人（選填） / State 618 Referrer (Optional)
           <input type="text" name="referrer">
@@ -203,7 +209,7 @@
   <footer class="site-footer">
     <span>STATE 618</span><span class="dot">•</span><span>Migration Interest</span>
   </footer>
-  <script src="site.js?v=20261018-0430"></script>
+  <script src="site.js?v=20261018-0410"></script>
   <script src="language.js?v=20261017-2245"></script>
 </body>
 </html>

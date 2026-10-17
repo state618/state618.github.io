@@ -491,3 +491,25 @@ textarea {
   word-break:break-all;
 }
 .submit-result.error{color:#e3b8bd}
+
+.group-member-note{
+  margin:-2px 0 18px;
+  padding:12px 14px;
+  border:1px solid rgba(200,137,184,.22);
+  border-radius:7px;
+  background:rgba(200,137,184,.06);
+}
+.group-member-note strong,
+.group-member-note span{
+  display:block;
+}
+.group-member-note strong{
+  color:#ead0df;
+  font-size:13px;
+}
+.group-member-note span{
+  margin-top:4px;
+  color:#aaa2ae;
+  font-size:11px;
+  line-height:1.55;
+}

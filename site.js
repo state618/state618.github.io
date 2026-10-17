@@ -252,8 +252,28 @@ function escapeHtml(value) {
 
 (function setupGroupInviteCode(){
   const input=document.getElementById('group-code');
+  const groupSizeField=document.getElementById('group-size-field');
+  const groupSize=document.getElementById('group-size');
+  const memberNote=document.getElementById('group-member-note');
   if(!input)return;
+
+  function syncGroupMode(){
+    const hasCode=Boolean(input.value.trim());
+
+    if(groupSizeField)groupSizeField.hidden=hasCode;
+    if(memberNote)memberNote.hidden=!hasCode;
+
+    if(groupSize){
+      groupSize.disabled=hasCode;
+      if(hasCode)groupSize.value='';
+    }
+  }
+
   const params=new URLSearchParams(window.location.search);
   const code=(params.get('group')||params.get('group_code')||'').trim();
   if(code)input.value=code;
+
+  input.addEventListener('input',syncGroupMode);
+  input.addEventListener('change',syncGroupMode);
+  syncGroupMode();
 })();

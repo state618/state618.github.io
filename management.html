@@ -111,23 +111,9 @@
             </select>
           </div>
 
-          <button class="applicant-card active" type="button" data-applicant="sample">
-            <div class="applicant-top"><strong>SamplePlayer</strong><span class="badge reviewing" data-i18n-zh="審核中" data-i18n-en="Under Review">審核中 / Under Review</span></div>
-            <div class="applicant-meta" data-i18n-zh="621州 · EXM · 戰力 245M" data-i18n-en="State 621 · EXM · 245M Power">621州 · EXM · 戰力 245M / State 621 · EXM · 245M Power</div>
-            <div class="applicant-bottom"><span data-i18n-zh="工業2 · 勇士" data-i18n-en="Industrial 2 · Warrior">工業2 · 勇士 / Industrial 2 · Warrior</span><span data-i18n-zh="同行 2–5 人" data-i18n-en="Group 2–5">同行 2–5 人 / Group 2–5</span></div>
-          </button>
-
-          <button class="applicant-card" type="button" data-applicant="night">
-            <div class="applicant-top"><strong>NightScout</strong><span class="badge reviewing" data-i18n-zh="審核中" data-i18n-en="Under Review">審核中 / Under Review</span></div>
-            <div class="applicant-meta" data-i18n-zh="624州 · NXT · 戰力 301M" data-i18n-en="State 624 · NXT · 301M Power">624州 · NXT · 戰力 301M / State 624 · NXT · 301M Power</div>
-            <div class="applicant-bottom"><span data-i18n-zh="工業3 · 射手" data-i18n-en="Industrial 3 · Shooter">工業3 · 射手 / Industrial 3 · Shooter</span><span data-i18n-zh="單人" data-i18n-en="Solo">單人 / Solo</span></div>
-          </button>
-
-          <button class="applicant-card" type="button" data-applicant="leader">
-            <div class="applicant-top"><strong>DemoLeader</strong><span class="badge reviewing" data-i18n-zh="審核中" data-i18n-en="Under Review">審核中 / Under Review</span></div>
-            <div class="applicant-meta" data-i18n-zh="620州 · DEM · 戰力 278M" data-i18n-en="State 620 · DEM · 278M Power">620州 · DEM · 戰力 278M / State 620 · DEM · 278M Power</div>
-            <div class="applicant-bottom"><span data-i18n-zh="工業2 · 騎兵" data-i18n-en="Industrial 2 · Rider">工業2 · 騎兵 / Industrial 2 · Rider</span><span data-i18n-zh="同行 6–10 人" data-i18n-en="Group 6–10">同行 6–10 人 / Group 6–10</span></div>
-          </button>
+          <div id="application-list" class="application-list">
+            <div class="history-empty">登入後載入申請資料…</div>
+          </div>
         </section>
 
         <aside class="detail-panel" id="applicant-detail-panel">
@@ -153,8 +139,9 @@
             <div><span data-i18n-zh="主力兵種" data-i18n-en="Main Troop">主力兵種 / Main Troop</span><strong data-i18n-zh="勇士" data-i18n-en="Warrior">勇士 / Warrior</strong></div>
             <div><span data-i18n-zh="瞭望塔等級" data-i18n-en="Watchtower">瞭望塔等級 / Watchtower</span><strong data-i18n-zh="工業2" data-i18n-en="Industrial 2">工業2 / Industrial 2</strong></div>
             <div><span data-i18n-zh="移民意願" data-i18n-en="Interest">移民意願 / Interest</span><strong data-i18n-zh="確定想來" data-i18n-en="Definitely interested">確定想來 / Definitely interested</strong></div>
-            <div><span data-i18n-zh="同行人數" data-i18n-en="Group Size">同行人數 / Group Size</span><strong data-i18n-zh="2–5 人" data-i18n-en="2–5 players">2–5 人 / 2–5 players</strong></div>
-            <div><span data-i18n-zh="活躍程度" data-i18n-en="Activity">活躍程度 / Activity</span><strong data-i18n-zh="積極參與" data-i18n-en="Highly active">積極參與 / Highly active</strong></div>
+            <div><span data-i18n-zh="同行人數" data-i18n-en="Group Size">同行人數 / Group Size</span><strong>—</strong></div>
+            <div><span data-i18n-zh="團隊邀請碼" data-i18n-en="Group Code">團隊邀請碼 / Group Code</span><strong>—</strong></div>
+            <div><span data-i18n-zh="活躍程度" data-i18n-en="Activity">活躍程度 / Activity</span><strong>—</strong></div>
             <div><span data-i18n-zh="管理經驗" data-i18n-en="Management">管理經驗 / Management</span><strong>R4</strong></div>
             <div><span data-i18n-zh="活躍時間" data-i18n-en="Active Time">活躍時間 / Active Time</span><strong>05ST–09ST</strong></div>
           </div>
@@ -211,7 +198,7 @@
 
   <audio id="site-bgm" src="audio/bgm.mp3" preload="auto" autoplay loop></audio>
   <script src="site.js?v=20261015-1335"></script>
-  <script src="management.js?v=20261018-0315"></script>
+  <script src="management.js?v=20261018-0645"></script>
   <script src="language.js?v=20261017-2305"></script>
 </body>
 </html>

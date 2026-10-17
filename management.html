@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#151018">
+  <title>STATE 618 | Alliance Management</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="management.css?v=20261017-2200">
+</head>
+<body class="management-page">
+  <div class="management-bg"></div>
+  <img class="manager-web" src="images/halloween-web-corner.png" alt="">
+
+  <header class="manager-topbar">
+    <a class="manager-brand" href="index.html">STATE <span>618</span></a>
+    <div class="manager-mode"><span class="status-dot"></span> Alliance Management · Secure Access</div>
+  </header>
+
+  <main class="manager-shell">
+    <section class="manager-login" id="manager-login">
+      <div class="login-copy">
+        <div class="section-kicker">ALLIANCE MANAGEMENT · 聯盟管理</div>
+        <h1>Migration Review<br>Console</h1>
+        <p class="zh-title">移民審核後台</p>
+        <p class="manager-intro">
+          Authorized alliance managers can review only the applications assigned to their own alliance.
+        </p>
+        <p class="manager-intro zh">
+          聯盟管理者登入後，只會看到指定自己聯盟的申請資料。
+        </p>
+
+        <div class="privacy-note">
+          <strong>Alliance-scoped access</strong>
+          <span>Applicants from other alliances will not be shown.</span>
+          <small>各聯盟資料彼此隔離，不顯示其他聯盟申請者。</small>
+        </div>
+      </div>
+
+      <form class="access-card" id="manager-access-form">
+        <div class="access-card-head">
+          <span>MANAGER ACCESS</span>
+          <span class="lock-mark">◆</span>
+        </div>
+
+        <label>聯盟 / Alliance
+          <select id="manager-alliance" required>
+            <option value="">請選擇 / Select alliance</option>
+            <option value="RZN">[RZN] Risen</option>
+            <option value="3311">[3311] 青丘寨</option>
+            <option value="RoD">[RoD!] Reign of Dragons</option>
+            <option value="RAW">[RAW$] War Dominion</option>
+            <option value="UNQ">[UNQ.] UNQUESTIONED</option>
+            <option value="KNT">[KNT] Knights of Round</option>
+            <option value="WofA">[WofA] Wolves of Anarchy</option>
+            <option value="S_B">[S_B] Storm Bringers</option>
+            <option value="RnB">[RnB] ReBoRN BiO</option>
+            <option value="TCB">[TCB] VenomousSlayers</option>
+          </select>
+        </label>
+
+        <label>管理者存取碼 / Management Access Key
+          <input id="manager-key" type="password" autocomplete="current-password" placeholder="Enter access key" required>
+        </label>
+
+        <button class="manager-login-button" type="submit">進入管理後台 / Open Dashboard</button>
+        <p class="access-message" id="access-message">Only authorized alliance management accounts may enter.</p>
+      </form>
+    </section>
+
+    <section class="dashboard demo-dashboard" id="demo-dashboard" hidden>
+      <div class="demo-ribbon">PREVIEW MODE · DEMO DATA</div>
+
+      <div class="dashboard-head">
+        <div>
+          <div class="section-kicker">ALLIANCE DASHBOARD</div>
+          <h2><span id="demo-alliance-tag">RoD!</span> · <span id="demo-alliance-name">Reign of Dragons</span></h2>
+          <p>Migration application review queue / 移民申請審核佇列</p>
+        </div>
+        <button class="ghost-button" id="exit-preview" type="button">← Back to Login</button>
+      </div>
+
+      <div class="metric-grid">
+        <article class="metric">
+          <span>New / 新申請</span>
+          <strong>1</strong>
+        </article>
+        <article class="metric">
+          <span>Interview / 等候面試</span>
+          <strong>2</strong>
+        </article>
+        <article class="metric">
+          <span>Review / 審核中</span>
+          <strong>1</strong>
+        </article>
+        <article class="metric">
+          <span>Approved / 已通過</span>
+          <strong>4</strong>
+        </article>
+      </div>
+
+      <div class="dashboard-grid">
+        <section class="queue-panel">
+          <div class="panel-head">
+            <div>
+              <span class="panel-label">APPLICATION QUEUE</span>
+              <h3>申請清單</h3>
+            </div>
+            <select class="queue-filter" aria-label="Filter applications">
+              <option>All Status</option>
+              <option>Received</option>
+              <option>Awaiting Interview</option>
+              <option>Under Review</option>
+            </select>
+          </div>
+
+          <button class="applicant-card active" type="button">
+            <div class="applicant-top">
+              <strong>SamplePlayer</strong>
+              <span class="badge received">Received</span>
+            </div>
+            <div class="applicant-meta">State 621 · EXM · 245M Power</div>
+            <div class="applicant-bottom">
+              <span>Industrial 2 · Warrior</span>
+              <span>Group 2–5</span>
+            </div>
+          </button>
+
+          <button class="applicant-card" type="button">
+            <div class="applicant-top">
+              <strong>NightScout</strong>
+              <span class="badge interview">Awaiting Interview</span>
+            </div>
+            <div class="applicant-meta">State 624 · NXT · 301M Power</div>
+            <div class="applicant-bottom">
+              <span>Industrial 3 · Shooter</span>
+              <span>Solo</span>
+            </div>
+          </button>
+
+          <button class="applicant-card" type="button">
+            <div class="applicant-top">
+              <strong>DemoLeader</strong>
+              <span class="badge reviewing">Under Review</span>
+            </div>
+            <div class="applicant-meta">State 620 · DEM · 278M Power</div>
+            <div class="applicant-bottom">
+              <span>Industrial 2 · Rider</span>
+              <span>Group 6–10</span>
+            </div>
+          </button>
+        </section>
+
+        <aside class="detail-panel">
+          <div class="detail-head">
+            <div>
+              <span class="panel-label">APPLICATION DETAIL</span>
+              <h3>SamplePlayer</h3>
+            </div>
+            <span class="badge received">Received · 已收到</span>
+          </div>
+
+          <div class="detail-grid">
+            <div><span>Player ID</span><strong>1234567890</strong></div>
+            <div><span>Current State</span><strong>621</strong></div>
+            <div><span>Current Alliance</span><strong>EXM</strong></div>
+            <div><span>Total Power</span><strong>245M</strong></div>
+            <div><span>Kills</span><strong>3.2M</strong></div>
+            <div><span>Main Troop</span><strong>Warrior</strong></div>
+            <div><span>Watchtower</span><strong>Industrial 2</strong></div>
+            <div><span>Interest</span><strong>Definitely interested</strong></div>
+            <div><span>Group Size</span><strong>2–5 players</strong></div>
+            <div><span>Activity</span><strong>Highly active</strong></div>
+            <div><span>Management</span><strong>R4</strong></div>
+            <div><span>Active Time</span><strong>05ST–09ST</strong></div>
+          </div>
+
+          <div class="group-warning">
+            <strong>Group member details pending</strong>
+            <span>同行者資料尚未提供</span>
+          </div>
+
+          <label class="manager-field">Reviewer / 負責人
+            <input type="text" value="Tina1227" placeholder="Manager name">
+          </label>
+
+          <label class="manager-field">Status / 申請狀態
+            <select>
+              <option>Received</option>
+              <option>Awaiting Interview</option>
+              <option>Under Review</option>
+              <option>Approved</option>
+              <option>Waitlist</option>
+              <option>Declined</option>
+            </select>
+          </label>
+
+          <label class="manager-field">Internal Notes / 內部備註
+            <textarea placeholder="Visible to alliance management only."></textarea>
+          </label>
+
+          <div class="detail-actions">
+            <button class="ghost-button" type="button">Request More Information</button>
+            <button class="save-button" type="button">Save Review</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <audio id="site-bgm" src="audio/bgm.mp3" preload="auto" autoplay loop></audio>
+  <script src="site.js?v=20261015-1335"></script>
+  <script src="management.js?v=20261017-2200"></script>
+</body>
+</html>

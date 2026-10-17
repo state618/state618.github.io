@@ -32,3 +32,9 @@
 .manager-field textarea{min-height:100px;resize:vertical}.detail-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media(max-width:960px){.manager-login,.dashboard-grid{grid-template-columns:1fr}.metric-grid{grid-template-columns:repeat(2,1fr)}.manager-mode{display:none}}
 @media(max-width:640px){.metric-grid,.detail-grid,.detail-actions{grid-template-columns:1fr}.dashboard-head{align-items:start;flex-direction:column}.applicant-bottom{flex-direction:column;gap:4px}.manager-shell{width:min(100% - 24px,1280px)}}
+
+.queue-help{margin:6px 0 0;color:#9e96a1;font-size:11px;line-height:1.45}
+.applicant-card{transition:border-color .18s ease,background .18s ease,transform .18s ease}
+.applicant-card:hover{transform:translateY(-1px)}
+.applicant-card.active::before{content:"";display:block;width:4px;height:4px;border-radius:50%;background:var(--mg);box-shadow:0 0 12px rgba(230,170,104,.7);position:absolute;left:8px;top:50%;transform:translateY(-50%)}
+.applicant-card{position:relative}

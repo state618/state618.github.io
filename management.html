@@ -100,39 +100,40 @@
             <div>
               <span class="panel-label" data-i18n-zh="申請清單" data-i18n-en="APPLICATION QUEUE">申請清單 / APPLICATION QUEUE</span>
               <h3 data-i18n-zh="待處理申請" data-i18n-en="Applications">待處理申請 / Applications</h3>
+              <p class="queue-help" data-i18n-zh="點選下方申請人，右側會顯示完整資料。" data-i18n-en="Select an applicant below to view full details on the right.">點選下方申請人，右側會顯示完整資料。 / Select an applicant below to view full details.</p>
             </div>
             <select class="queue-filter" aria-label="Filter applications">
-              <option data-i18n-zh="全部狀態" data-i18n-en="All Status">全部狀態 / All Status</option>
-              <option data-i18n-zh="已收到" data-i18n-en="Received">已收到 / Received</option>
-              <option data-i18n-zh="等候面試" data-i18n-en="Awaiting Interview">等候面試 / Awaiting Interview</option>
-              <option data-i18n-zh="審核中" data-i18n-en="Under Review">審核中 / Under Review</option>
+              <option value="all" data-i18n-zh="全部狀態" data-i18n-en="All Status">全部狀態 / All Status</option>
+              <option value="Received" data-i18n-zh="已收到" data-i18n-en="Received">已收到 / Received</option>
+              <option value="Awaiting Interview" data-i18n-zh="等候面試" data-i18n-en="Awaiting Interview">等候面試 / Awaiting Interview</option>
+              <option value="Under Review" data-i18n-zh="審核中" data-i18n-en="Under Review">審核中 / Under Review</option>
             </select>
           </div>
 
-          <button class="applicant-card active" type="button">
+          <button class="applicant-card active" type="button" data-applicant="sample">
             <div class="applicant-top"><strong>SamplePlayer</strong><span class="badge received" data-i18n-zh="已收到" data-i18n-en="Received">已收到 / Received</span></div>
             <div class="applicant-meta" data-i18n-zh="621州 · EXM · 戰力 245M" data-i18n-en="State 621 · EXM · 245M Power">621州 · EXM · 戰力 245M / State 621 · EXM · 245M Power</div>
             <div class="applicant-bottom"><span data-i18n-zh="工業2 · 勇士" data-i18n-en="Industrial 2 · Warrior">工業2 · 勇士 / Industrial 2 · Warrior</span><span data-i18n-zh="同行 2–5 人" data-i18n-en="Group 2–5">同行 2–5 人 / Group 2–5</span></div>
           </button>
 
-          <button class="applicant-card" type="button">
+          <button class="applicant-card" type="button" data-applicant="night">
             <div class="applicant-top"><strong>NightScout</strong><span class="badge interview" data-i18n-zh="等候面試" data-i18n-en="Awaiting Interview">等候面試 / Awaiting Interview</span></div>
             <div class="applicant-meta" data-i18n-zh="624州 · NXT · 戰力 301M" data-i18n-en="State 624 · NXT · 301M Power">624州 · NXT · 戰力 301M / State 624 · NXT · 301M Power</div>
             <div class="applicant-bottom"><span data-i18n-zh="工業3 · 射手" data-i18n-en="Industrial 3 · Shooter">工業3 · 射手 / Industrial 3 · Shooter</span><span data-i18n-zh="單人" data-i18n-en="Solo">單人 / Solo</span></div>
           </button>
 
-          <button class="applicant-card" type="button">
+          <button class="applicant-card" type="button" data-applicant="leader">
             <div class="applicant-top"><strong>DemoLeader</strong><span class="badge reviewing" data-i18n-zh="審核中" data-i18n-en="Under Review">審核中 / Under Review</span></div>
             <div class="applicant-meta" data-i18n-zh="620州 · DEM · 戰力 278M" data-i18n-en="State 620 · DEM · 278M Power">620州 · DEM · 戰力 278M / State 620 · DEM · 278M Power</div>
             <div class="applicant-bottom"><span data-i18n-zh="工業2 · 騎兵" data-i18n-en="Industrial 2 · Rider">工業2 · 騎兵 / Industrial 2 · Rider</span><span data-i18n-zh="同行 6–10 人" data-i18n-en="Group 6–10">同行 6–10 人 / Group 6–10</span></div>
           </button>
         </section>
 
-        <aside class="detail-panel">
+        <aside class="detail-panel" id="applicant-detail-panel">
           <div class="detail-head">
             <div>
               <span class="panel-label" data-i18n-zh="申請資料" data-i18n-en="APPLICATION DETAIL">申請資料 / APPLICATION DETAIL</span>
-              <h3>SamplePlayer</h3>
+              <h3 id="detail-player-name">SamplePlayer</h3>
             </div>
             <span class="badge received" data-i18n-zh="已收到" data-i18n-en="Received">已收到 / Received</span>
           </div>

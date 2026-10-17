@@ -8,6 +8,7 @@
   const exit=document.getElementById('exit-preview');
   const tag=document.getElementById('demo-alliance-tag');
   const name=document.getElementById('demo-alliance-name');
+  const responsibleAlliance=document.getElementById('responsible-alliance');
 
   const allianceNames={
     RZN:'Risen',
@@ -47,6 +48,7 @@
       }
       tag.textContent=allianceTags[alliance.value]||alliance.value;
       name.textContent=allianceNames[alliance.value]||alliance.value;
+      if(responsibleAlliance)responsibleAlliance.textContent=allianceTags[alliance.value]||alliance.value;
       login.hidden=true;
       dashboard.hidden=false;
       window.scrollTo({top:0,behavior:'smooth'});
@@ -129,6 +131,55 @@
         const p=profiles[card.dataset.applicant];
         card.hidden=wanted!=='all'&&p.status!==wanted;
       });
+    });
+  }
+
+  const operatorName=document.getElementById('operator-name');
+  const operatorError=document.getElementById('operator-error');
+  const saveReview=document.getElementById('save-review-button');
+  const requestInfo=document.getElementById('request-info-button');
+  const historyList=document.getElementById('activity-history-list');
+
+  function requireOperator(){
+    if(operatorName&&operatorName.value.trim()) {
+      if(operatorError)operatorError.hidden=true;
+      return operatorName.value.trim();
+    }
+    if(operatorError)operatorError.hidden=false;
+    if(operatorName)operatorName.focus();
+    return '';
+  }
+
+  function addDemoHistory(actionZh,actionEn){
+    const operator=requireOperator();
+    if(!operator||!historyList)return false;
+    const empty=historyList.querySelector('.history-empty');
+    if(empty)empty.remove();
+    const row=document.createElement('div');
+    row.className='history-item';
+    const now=new Date();
+    const stamp=now.toLocaleString('zh-TW',{hour12:false});
+    const mode=lang();
+    const action=mode==='zh'?actionZh:mode==='en'?actionEn:actionZh+' / '+actionEn;
+    const allianceLabel=responsibleAlliance?responsibleAlliance.textContent:'';
+    row.innerHTML='<div><strong>'+operator+'</strong><span>'+allianceLabel+'</span></div><p>'+action+'</p><time>'+stamp+'</time>';
+    historyList.prepend(row);
+    return true;
+  }
+
+  if(operatorName){
+    operatorName.addEventListener('input',function(){
+      if(operatorName.value.trim()&&operatorError)operatorError.hidden=true;
+    });
+  }
+  if(saveReview){
+    saveReview.addEventListener('click',function(){
+      addDemoHistory('\u5132\u5b58\u5be9\u6838\u8b8a\u66f4','Saved review changes');
+    });
+  }
+  if(requestInfo){
+    requestInfo.addEventListener('click',function(){
+      addDemoHistory('\u8981\u6c42\u7533\u8acb\u8005\u88dc\u5145\u8cc7\u6599','Requested more information');
     });
   }
 

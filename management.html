@@ -163,8 +163,14 @@
             <span data-i18n-zh="這筆申請需要先向申請者索取同行名單。" data-i18n-en="Ask the applicant for the group member list before continuing.">這筆申請需要先向申請者索取同行名單。</span>
           </div>
 
-          <label class="manager-field"><span data-i18n-zh="負責人" data-i18n-en="Reviewer">負責人 / Reviewer</span>
-            <input type="text" value="Tina1227" data-placeholder-zh="輸入負責人名稱" data-placeholder-en="Manager name" placeholder="輸入負責人名稱 / Manager name">
+          <div class="manager-field responsible-alliance-field">
+            <span data-i18n-zh="負責聯盟" data-i18n-en="Responsible Alliance">負責聯盟 / Responsible Alliance</span>
+            <strong id="responsible-alliance">3311</strong>
+          </div>
+
+          <label class="manager-field"><span data-i18n-zh="操作者名稱（必填）" data-i18n-en="Operator Name (Required)">操作者名稱（必填） / Operator Name (Required)</span>
+            <input id="operator-name" type="text" required autocomplete="off" data-placeholder-zh="請輸入遊戲內名稱" data-placeholder-en="Enter your in-game name" placeholder="請輸入遊戲內名稱 / Enter your in-game name">
+            <small class="operator-error" id="operator-error" hidden data-i18n-zh="請先填寫操作者名稱。" data-i18n-en="Operator name is required.">請先填寫操作者名稱。 / Operator name is required.</small>
           </label>
 
           <label class="manager-field"><span data-i18n-zh="申請狀態" data-i18n-en="Status">申請狀態 / Status</span>
@@ -183,9 +189,22 @@
           </label>
 
           <div class="detail-actions">
-            <button class="ghost-button" type="button" data-i18n-zh="要求補資料" data-i18n-en="Request More Information">要求補資料 / Request More Information</button>
-            <button class="save-button" type="button" data-i18n-zh="儲存審核" data-i18n-en="Save Review">儲存審核 / Save Review</button>
+            <button class="ghost-button" id="request-info-button" type="button" data-i18n-zh="要求補資料" data-i18n-en="Request More Information">要求補資料 / Request More Information</button>
+            <button class="save-button" id="save-review-button" type="button" data-i18n-zh="儲存審核" data-i18n-en="Save Review">儲存審核 / Save Review</button>
           </div>
+
+          <section class="activity-history" aria-labelledby="activity-history-title">
+            <div class="activity-history-head">
+              <div>
+                <span class="panel-label" data-i18n-zh="操作留痕" data-i18n-en="AUDIT TRAIL">操作留痕 / AUDIT TRAIL</span>
+                <h3 id="activity-history-title" data-i18n-zh="編輯紀錄" data-i18n-en="Activity History">編輯紀錄 / Activity History</h3>
+              </div>
+              <span class="history-lock" data-i18n-zh="唯讀" data-i18n-en="Read only">唯讀 / Read only</span>
+            </div>
+            <div id="activity-history-list" class="activity-history-list">
+              <div class="history-empty" data-i18n-zh="目前沒有編輯紀錄。" data-i18n-en="No activity yet.">目前沒有編輯紀錄。 / No activity yet.</div>
+            </div>
+          </section>
         </aside>
       </div>
     </section>

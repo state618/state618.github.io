@@ -21,13 +21,31 @@
     KNT:'KNT',WofA:'WofA',S_B:'S_B',RnB:'RnB',TCB:'TCB'
   };
 
+  const demoKeys={
+    '3311':'3311-DEMO-618'
+  };
+
   form.addEventListener('submit',function(event){
     event.preventDefault();
+
     if(!alliance.value||!key.value.trim()){
       message.textContent='請選擇聯盟並輸入管理者存取碼。 / Select an alliance and enter an access key.';
       message.className='access-message error';
       return;
     }
+
+    if(!demoKeys[alliance.value]){
+      message.textContent='這個聯盟的測試存取碼尚未建立。 / Demo access is not configured for this alliance yet.';
+      message.className='access-message error';
+      return;
+    }
+
+    if(key.value.trim()!==demoKeys[alliance.value]){
+      message.textContent='存取碼錯誤。 / Invalid access key.';
+      message.className='access-message error';
+      return;
+    }
+
     tag.textContent=allianceTags[alliance.value]||alliance.value;
     name.textContent=allianceNames[alliance.value]||alliance.value;
     login.hidden=true;

@@ -31,20 +31,6 @@ function setSubmitMessage(text, type = '') {
   let submittedPlayerId = '';
 
   form.addEventListener('submit', (event) => {
-    const groupSize = String(form.elements.group_size?.value || '').trim();
-    const groupCode = String(form.elements.group_code?.value || '').trim();
-    const currentAlliance = String(form.elements.current_alliance?.value || '').trim();
-
-    if (groupSize && groupSize !== '自己' && !groupCode && !currentAlliance) {
-      event.preventDefault();
-      form.elements.current_alliance?.focus();
-      setSubmitMessage(
-        '揪團者需要填寫目前聯盟，系統才可以產生「聯盟代碼 + 流水號」邀請碼。 / Group organizers must enter their current alliance so a group code can be generated.',
-        'error'
-      );
-      return;
-    }
-
     submittedPlayerId = String(form.elements.player_id?.value || '').trim();
     waitingForResponse = true;
     button.disabled = true;

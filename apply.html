@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#211522">
   <title>STATE 618 | Migration Interest Survey</title>
   <link rel="stylesheet" href="styles.css?v=20261017-2245">
-  <link rel="stylesheet" href="form.css?v=20261015-1315">
+  <link rel="stylesheet" href="form.css?v=20261018-0345">
 </head>
 <body class="form-page">
   <header class="form-topbar">
@@ -56,6 +56,12 @@
 
         <label>目前聯盟 / Current Alliance
           <input type="text" name="current_alliance">
+        </label>
+
+        <label class="group-code-field">
+          <span data-i18n-zh="團隊邀請碼（選填）" data-i18n-en="Group Invite Code (Optional)">團隊邀請碼（選填） / Group Invite Code (Optional)</span>
+          <input type="text" name="group_code" id="group-code" maxlength="32" autocomplete="off" placeholder="例如 / e.g. GRP-7K4M2">
+          <small class="field-help" data-i18n-zh="若你是團隊成員，請填寫揪團者提供的邀請碼；其餘申請者可留空。" data-i18n-en="If you are joining a group, enter the invite code from the group organizer. Otherwise, leave this blank.">若你是團隊成員，請填寫揪團者提供的邀請碼；其餘申請者可留空。 / If you are joining a group, enter the invite code from the group organizer. Otherwise, leave this blank.</small>
         </label>
       </fieldset>
 
@@ -197,7 +203,7 @@
   <footer class="site-footer">
     <span>STATE 618</span><span class="dot">•</span><span>Migration Interest</span>
   </footer>
-  <script src="site.js?v=20261015-1335"></script>
+  <script src="site.js?v=20261018-0345"></script>
   <script src="language.js?v=20261017-2245"></script>
 </body>
 </html>

@@ -216,3 +216,12 @@ function escapeHtml(value) {
   document.addEventListener('keydown', unlockAudio, true);
   document.addEventListener('touchstart', unlockAudio, true);
 })();
+
+
+(function setupGroupInviteCode(){
+  const input=document.getElementById('group-code');
+  if(!input)return;
+  const params=new URLSearchParams(window.location.search);
+  const code=(params.get('group')||params.get('group_code')||'').trim();
+  if(code)input.value=code;
+})();

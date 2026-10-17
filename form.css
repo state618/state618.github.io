@@ -470,3 +470,16 @@ textarea {
     display: none;
   }
 }
+
+.group-code-field{margin-top:2px}
+.field-help{
+  display:block;
+  margin-top:7px;
+  color:#9f98a5;
+  font-size:11px;
+  line-height:1.55;
+  font-weight:400;
+}
+.group-code-field input:not(:placeholder-shown){
+  border-color:rgba(200,137,184,.46);
+}

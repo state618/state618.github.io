@@ -75,17 +75,23 @@
     sample:{
       name:'SamplePlayer',status:'Received',zh:'\u5df2\u6536\u5230',en:'Received',
       values:['1234567890','621','EXM','245M','3.2M',{zh:'\u52c7\u58eb',en:'Warrior'},{zh:'\u5de5\u696d2',en:'Industrial 2'},{zh:'\u78ba\u5b9a\u60f3\u4f86',en:'Definitely interested'},{zh:'2\u20135 \u4eba',en:'2\u20135 players'},{zh:'\u7a4d\u6975\u53c3\u8207',en:'Highly active'},'R4','05ST\u201309ST'],
-      groupPending:true
+      groupPending:true,
+      notes:'',
+      history:[]
     },
     night:{
       name:'NightScout',status:'Awaiting Interview',zh:'\u7b49\u5019\u9762\u8a66',en:'Awaiting Interview',
       values:['9876543210','624','NXT','301M','4.8M',{zh:'\u5c04\u624b',en:'Shooter'},{zh:'\u5de5\u696d3',en:'Industrial 3'},{zh:'\u78ba\u5b9a\u60f3\u4f86',en:'Definitely interested'},{zh:'\u55ae\u4eba',en:'Solo'},{zh:'\u7a4d\u6975\u53c3\u8207',en:'Highly active'},'R4','10ST\u201315ST'],
-      groupPending:false
+      groupPending:false,
+      notes:'',
+      history:[]
     },
     leader:{
       name:'DemoLeader',status:'Under Review',zh:'\u5be9\u6838\u4e2d',en:'Under Review',
       values:['2468013579','620','DEM','278M','3.9M',{zh:'\u9a0e\u5175',en:'Rider'},{zh:'\u5de5\u696d2',en:'Industrial 2'},{zh:'\u9ad8\u5ea6\u8003\u616e',en:'Strongly considering'},{zh:'6\u201310 \u4eba',en:'6\u201310 players'},{zh:'\u6d3b\u8e8d',en:'Active'},'R5','00ST\u201306ST'],
-      groupPending:true
+      groupPending:true,
+      notes:'',
+      history:[]
     }
   };
 
@@ -115,6 +121,9 @@
     p.values.forEach((v,i)=>{if(valueEls[i])valueEls[i].textContent=displayValue(v);});
     const warning=detail.querySelector('.group-warning');
     if(warning)warning.hidden=!p.groupPending;
+    if(statusSelect)statusSelect.value=p.status;
+    if(notesField)notesField.value=p.notes||'';
+    renderHistory();
   }
 
   cards.forEach(card=>{
@@ -139,6 +148,8 @@
   const saveReview=document.getElementById('save-review-button');
   const requestInfo=document.getElementById('request-info-button');
   const historyList=document.getElementById('activity-history-list');
+  const statusSelect=detail.querySelector('.manager-field select');
+  const notesField=detail.querySelector('.manager-field textarea');
 
   function requireOperator(){
     if(operatorName&&operatorName.value.trim()) {
@@ -150,20 +161,40 @@
     return '';
   }
 
+  function escapeHtml(value){
+    return String(value).replace(/[&<>"']/g,function(ch){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch];
+    });
+  }
+
+  function renderHistory(){
+    if(!historyList)return;
+    const p=profiles[selected];
+    if(!p||!p.history||!p.history.length){
+      historyList.innerHTML='<div class="history-empty" data-i18n-zh="目前沒有編輯紀錄。" data-i18n-en="No activity yet.">目前沒有編輯紀錄。</div>';
+      return;
+    }
+    const mode=lang();
+    historyList.innerHTML=p.history.map(function(item){
+      const action=mode==='zh'?item.actionZh:mode==='en'?item.actionEn:item.actionZh+' / '+item.actionEn;
+      return '<div class="history-item"><div><strong>'+escapeHtml(item.operator)+'</strong><span>'+escapeHtml(item.alliance)+'</span></div><p>'+escapeHtml(action)+'</p><time>'+escapeHtml(item.stamp)+'</time></div>';
+    }).join('');
+  }
+
   function addDemoHistory(actionZh,actionEn){
     const operator=requireOperator();
     if(!operator||!historyList)return false;
-    const empty=historyList.querySelector('.history-empty');
-    if(empty)empty.remove();
-    const row=document.createElement('div');
-    row.className='history-item';
+    const p=profiles[selected];
+    if(!p)return false;
     const now=new Date();
-    const stamp=now.toLocaleString('zh-TW',{hour12:false});
-    const mode=lang();
-    const action=mode==='zh'?actionZh:mode==='en'?actionEn:actionZh+' / '+actionEn;
-    const allianceLabel=responsibleAlliance?responsibleAlliance.textContent:'';
-    row.innerHTML='<div><strong>'+operator+'</strong><span>'+allianceLabel+'</span></div><p>'+action+'</p><time>'+stamp+'</time>';
-    historyList.prepend(row);
+    p.history.unshift({
+      operator:operator,
+      alliance:responsibleAlliance?responsibleAlliance.textContent:'',
+      actionZh:actionZh,
+      actionEn:actionEn,
+      stamp:now.toLocaleString('zh-TW',{hour12:false})
+    });
+    renderHistory();
     return true;
   }
 
@@ -174,7 +205,50 @@
   }
   if(saveReview){
     saveReview.addEventListener('click',function(){
-      addDemoHistory('\u5132\u5b58\u5be9\u6838\u8b8a\u66f4','Saved review changes');
+      const operator=requireOperator();
+      if(!operator)return;
+      const p=profiles[selected];
+      const changes=[];
+      const newStatus=statusSelect?statusSelect.value:p.status;
+      const newNotes=notesField?notesField.value.trim():p.notes;
+
+      if(newStatus!==p.status){
+        const statusZh={
+          'Received':'已收到',
+          'Awaiting Interview':'等候面試',
+          'Under Review':'審核中',
+          'Approved':'已通過',
+          'Waitlist':'候補',
+          'Declined':'未通過'
+        };
+        changes.push({
+          zh:'申請狀態：'+(statusZh[p.status]||p.status)+' → '+(statusZh[newStatus]||newStatus),
+          en:'Status: '+p.status+' → '+newStatus
+        });
+        p.status=newStatus;
+        p.zh=statusZh[newStatus]||newStatus;
+        p.en=newStatus;
+      }
+
+      if(newNotes!==p.notes){
+        changes.push({
+          zh:'更新內部備註',
+          en:'Updated internal notes'
+        });
+        p.notes=newNotes;
+      }
+
+      if(!changes.length){
+        changes.push({
+          zh:'儲存審核（無欄位變更）',
+          en:'Saved review (no field changes)'
+        });
+      }
+
+      changes.forEach(function(change){
+        addDemoHistory(change.zh,change.en);
+      });
+      render(selected);
     });
   }
   if(requestInfo){
@@ -183,6 +257,6 @@
     });
   }
 
-  window.addEventListener('state618:languagechange',function(){render(selected);});
+  window.addEventListener('state618:languagechange',function(){render(selected);renderHistory();});
   render(selected);
 })();

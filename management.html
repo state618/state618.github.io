@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#151018">
   <title>STATE 618 | Alliance Management</title>
-  <link rel="stylesheet" href="styles.css?v=20261017-2245">
-  <link rel="stylesheet" href="management.css?v=20261017-2200">
+  <link rel="stylesheet" href="styles.css?v=20261017-2305">
+  <link rel="stylesheet" href="management.css?v=20261017-2305">
 </head>
 <body class="management-page">
   <div class="management-bg"></div>
@@ -14,38 +14,34 @@
 
   <header class="manager-topbar">
     <a class="manager-brand" href="index.html">STATE <span>618</span></a>
-    <div class="manager-mode"><span class="status-dot"></span> 聯盟管理後台 <small>Alliance Management</small></div>
+    <div class="manager-mode">
+      <span class="status-dot"></span>
+      <span data-i18n-zh="聯盟管理後台" data-i18n-en="Alliance Management">聯盟管理後台 / Alliance Management</span>
+    </div>
   </header>
 
   <main class="manager-shell">
     <section class="manager-login" id="manager-login">
       <div class="login-copy">
-        <div class="section-kicker">聯盟管理 · ALLIANCE MANAGEMENT</div>
-        <h1>移民申請<br>審核後台</h1>
-        <p class="zh-title">Migration Review Console</p>
-        <p class="manager-intro zh">
-          聯盟管理者登入後，只會看到指定自己聯盟的申請資料。
-        </p>
-        <p class="manager-intro en">
-          Authorized alliance managers can review only applications assigned to their own alliance.
-        </p>
+        <div class="section-kicker" data-i18n-zh="聯盟管理" data-i18n-en="ALLIANCE MANAGEMENT">聯盟管理 / ALLIANCE MANAGEMENT</div>
+        <h1 data-i18n-zh="移民申請審核後台" data-i18n-en="Migration Review Console">移民申請審核後台 / Migration Review Console</h1>
+        <p class="manager-intro" data-i18n-zh="聯盟管理者登入後，只會看到指定自己聯盟的申請資料。" data-i18n-en="Authorized alliance managers can review only applications assigned to their own alliance.">聯盟管理者登入後，只會看到指定自己聯盟的申請資料。 / Authorized alliance managers can review only applications assigned to their own alliance.</p>
 
         <div class="privacy-note">
-          <strong>聯盟資料獨立顯示</strong>
-          <span>只顯示指定此聯盟的申請者。</span>
-          <small>Alliance-scoped access · Applicants from other alliances will not be shown.</small>
+          <strong data-i18n-zh="聯盟資料獨立顯示" data-i18n-en="Alliance-scoped access">聯盟資料獨立顯示 / Alliance-scoped access</strong>
+          <span data-i18n-zh="只顯示指定此聯盟的申請者，不會看到其他聯盟資料。" data-i18n-en="Only applicants assigned to this alliance are shown. Other alliances remain private.">只顯示指定此聯盟的申請者，不會看到其他聯盟資料。 / Only applicants assigned to this alliance are shown.</span>
         </div>
       </div>
 
       <form class="access-card" id="manager-access-form">
         <div class="access-card-head">
-          <span>管理者登入 · MANAGER ACCESS</span>
+          <span data-i18n-zh="管理者登入" data-i18n-en="MANAGER ACCESS">管理者登入 / MANAGER ACCESS</span>
           <span class="lock-mark">◆</span>
         </div>
 
-        <label>聯盟 / Alliance
+        <label><span data-i18n-zh="聯盟" data-i18n-en="Alliance">聯盟 / Alliance</span>
           <select id="manager-alliance" required>
-            <option value="">請選擇 / Select alliance</option>
+            <option value="" data-i18n-zh="請選擇聯盟" data-i18n-en="Select alliance">請選擇聯盟 / Select alliance</option>
             <option value="RZN">[RZN] Risen</option>
             <option value="3311">[3311] 青丘寨</option>
             <option value="RoD">[RoD!] Reign of Dragons</option>
@@ -59,149 +55,135 @@
           </select>
         </label>
 
-        <label>管理者存取碼 / Management Access Key
-          <input id="manager-key" type="password" autocomplete="current-password" placeholder="Enter access key" required>
+        <label><span data-i18n-zh="管理者存取碼" data-i18n-en="Management Access Key">管理者存取碼 / Management Access Key</span>
+          <input id="manager-key" type="password" autocomplete="current-password" data-placeholder-zh="輸入存取碼" data-placeholder-en="Enter access key" placeholder="輸入存取碼 / Enter access key" required>
         </label>
 
-        <button class="manager-login-button" type="submit">進入管理後台 / Open Dashboard</button>
-        <p class="access-message" id="access-message">僅限授權的聯盟管理者使用。 / Authorized managers only.</p>
+        <button class="manager-login-button" type="submit" data-i18n-zh="進入管理後台" data-i18n-en="Open Dashboard">進入管理後台 / Open Dashboard</button>
+        <p class="access-message" id="access-message" data-i18n-zh="僅限授權的聯盟管理者使用。" data-i18n-en="Authorized managers only.">僅限授權的聯盟管理者使用。 / Authorized managers only.</p>
       </form>
     </section>
 
     <section class="dashboard demo-dashboard" id="demo-dashboard" hidden>
-      <div class="demo-ribbon">預覽模式 · DEMO DATA</div>
-
       <div class="dashboard-head">
         <div>
-          <div class="section-kicker">聯盟審核台 · ALLIANCE DASHBOARD</div>
-          <h2><span id="demo-alliance-tag">RoD!</span> · <span id="demo-alliance-name">Reign of Dragons</span></h2>
-          <p>移民申請審核佇列 <small>Migration application review queue</small></p>
+          <div class="section-kicker" data-i18n-zh="聯盟審核台" data-i18n-en="ALLIANCE DASHBOARD">聯盟審核台 / ALLIANCE DASHBOARD</div>
+          <h2><span id="demo-alliance-tag">3311</span> · <span id="demo-alliance-name">青丘寨</span></h2>
+          <p data-i18n-zh="移民申請審核佇列" data-i18n-en="Migration application review queue">移民申請審核佇列 / Migration application review queue</p>
         </div>
-        <button class="ghost-button" id="exit-preview" type="button">← 返回登入 / Back</button>
+        <button class="ghost-button" id="exit-preview" type="button" data-i18n-zh="← 返回登入" data-i18n-en="← Back to Login">← 返回登入 / Back to Login</button>
       </div>
 
+      <section class="howto-panel">
+        <div class="howto-title">
+          <strong data-i18n-zh="這一頁要做什麼？" data-i18n-en="What do I do here?">這一頁要做什麼？ / What do I do here?</strong>
+          <span data-i18n-zh="照這四步處理每一筆申請即可。" data-i18n-en="Use these four steps for each application.">照這四步處理每一筆申請即可。 / Use these four steps for each application.</span>
+        </div>
+        <div class="howto-steps">
+          <div><b>1</b><span data-i18n-zh="左邊點選申請人" data-i18n-en="Select an applicant on the left">左邊點選申請人 / Select an applicant</span></div>
+          <div><b>2</b><span data-i18n-zh="右邊確認資料是否完整" data-i18n-en="Review the details on the right">右邊確認資料是否完整 / Review details</span></div>
+          <div><b>3</b><span data-i18n-zh="填負責人並更新狀態" data-i18n-en="Assign reviewer and update status">填負責人並更新狀態 / Update status</span></div>
+          <div><b>4</b><span data-i18n-zh="寫內部備註後儲存" data-i18n-en="Add notes and save the review">寫內部備註後儲存 / Add notes and save</span></div>
+        </div>
+      </section>
+
       <div class="metric-grid">
-        <article class="metric">
-          <span>新申請 <small>New</small></span>
-          <strong>1</strong>
-        </article>
-        <article class="metric">
-          <span>等候面試 <small>Interview</small></span>
-          <strong>2</strong>
-        </article>
-        <article class="metric">
-          <span>審核中 <small>Review</small></span>
-          <strong>1</strong>
-        </article>
-        <article class="metric">
-          <span>已通過 <small>Approved</small></span>
-          <strong>4</strong>
-        </article>
+        <article class="metric"><span data-i18n-zh="新申請" data-i18n-en="New">新申請 / New</span><strong>1</strong></article>
+        <article class="metric"><span data-i18n-zh="等候面試" data-i18n-en="Interview">等候面試 / Interview</span><strong>2</strong></article>
+        <article class="metric"><span data-i18n-zh="審核中" data-i18n-en="Under Review">審核中 / Under Review</span><strong>1</strong></article>
+        <article class="metric"><span data-i18n-zh="已通過" data-i18n-en="Approved">已通過 / Approved</span><strong>4</strong></article>
       </div>
 
       <div class="dashboard-grid">
         <section class="queue-panel">
           <div class="panel-head">
             <div>
-              <span class="panel-label">申請清單</span>
-              <h3>待處理申請 <small>Application Queue</small></h3>
+              <span class="panel-label" data-i18n-zh="申請清單" data-i18n-en="APPLICATION QUEUE">申請清單 / APPLICATION QUEUE</span>
+              <h3 data-i18n-zh="待處理申請" data-i18n-en="Applications">待處理申請 / Applications</h3>
             </div>
             <select class="queue-filter" aria-label="Filter applications">
-              <option>全部狀態 / All</option>
-              <option>已收到 / Received</option>
-              <option>等候面試 / Awaiting Interview</option>
-              <option>審核中 / Under Review</option>
+              <option data-i18n-zh="全部狀態" data-i18n-en="All Status">全部狀態 / All Status</option>
+              <option data-i18n-zh="已收到" data-i18n-en="Received">已收到 / Received</option>
+              <option data-i18n-zh="等候面試" data-i18n-en="Awaiting Interview">等候面試 / Awaiting Interview</option>
+              <option data-i18n-zh="審核中" data-i18n-en="Under Review">審核中 / Under Review</option>
             </select>
           </div>
 
           <button class="applicant-card active" type="button">
-            <div class="applicant-top">
-              <strong>SamplePlayer</strong>
-              <span class="badge received">已收到 / Received</span>
-            </div>
-            <div class="applicant-meta">621州 · EXM · 戰力 245M</div>
-            <div class="applicant-bottom">
-              <span>工業2 · 勇士</span>
-              <span>同行 2–5 人</span>
-            </div>
+            <div class="applicant-top"><strong>SamplePlayer</strong><span class="badge received" data-i18n-zh="已收到" data-i18n-en="Received">已收到 / Received</span></div>
+            <div class="applicant-meta" data-i18n-zh="621州 · EXM · 戰力 245M" data-i18n-en="State 621 · EXM · 245M Power">621州 · EXM · 戰力 245M / State 621 · EXM · 245M Power</div>
+            <div class="applicant-bottom"><span data-i18n-zh="工業2 · 勇士" data-i18n-en="Industrial 2 · Warrior">工業2 · 勇士 / Industrial 2 · Warrior</span><span data-i18n-zh="同行 2–5 人" data-i18n-en="Group 2–5">同行 2–5 人 / Group 2–5</span></div>
           </button>
 
           <button class="applicant-card" type="button">
-            <div class="applicant-top">
-              <strong>NightScout</strong>
-              <span class="badge interview">等候面試 / Awaiting Interview</span>
-            </div>
-            <div class="applicant-meta">State 624 · NXT · 301M Power</div>
-            <div class="applicant-bottom">
-              <span>Industrial 3 · Shooter</span>
-              <span>Solo</span>
-            </div>
+            <div class="applicant-top"><strong>NightScout</strong><span class="badge interview" data-i18n-zh="等候面試" data-i18n-en="Awaiting Interview">等候面試 / Awaiting Interview</span></div>
+            <div class="applicant-meta" data-i18n-zh="624州 · NXT · 戰力 301M" data-i18n-en="State 624 · NXT · 301M Power">624州 · NXT · 戰力 301M / State 624 · NXT · 301M Power</div>
+            <div class="applicant-bottom"><span data-i18n-zh="工業3 · 射手" data-i18n-en="Industrial 3 · Shooter">工業3 · 射手 / Industrial 3 · Shooter</span><span data-i18n-zh="單人" data-i18n-en="Solo">單人 / Solo</span></div>
           </button>
 
           <button class="applicant-card" type="button">
-            <div class="applicant-top">
-              <strong>DemoLeader</strong>
-              <span class="badge reviewing">Under Review</span>
-            </div>
-            <div class="applicant-meta">State 620 · DEM · 278M Power</div>
-            <div class="applicant-bottom">
-              <span>Industrial 2 · Rider</span>
-              <span>Group 6–10</span>
-            </div>
+            <div class="applicant-top"><strong>DemoLeader</strong><span class="badge reviewing" data-i18n-zh="審核中" data-i18n-en="Under Review">審核中 / Under Review</span></div>
+            <div class="applicant-meta" data-i18n-zh="620州 · DEM · 戰力 278M" data-i18n-en="State 620 · DEM · 278M Power">620州 · DEM · 戰力 278M / State 620 · DEM · 278M Power</div>
+            <div class="applicant-bottom"><span data-i18n-zh="工業2 · 騎兵" data-i18n-en="Industrial 2 · Rider">工業2 · 騎兵 / Industrial 2 · Rider</span><span data-i18n-zh="同行 6–10 人" data-i18n-en="Group 6–10">同行 6–10 人 / Group 6–10</span></div>
           </button>
         </section>
 
         <aside class="detail-panel">
           <div class="detail-head">
             <div>
-              <span class="panel-label">APPLICATION DETAIL</span>
+              <span class="panel-label" data-i18n-zh="申請資料" data-i18n-en="APPLICATION DETAIL">申請資料 / APPLICATION DETAIL</span>
               <h3>SamplePlayer</h3>
             </div>
-            <span class="badge received">Received · 已收到</span>
+            <span class="badge received" data-i18n-zh="已收到" data-i18n-en="Received">已收到 / Received</span>
+          </div>
+
+          <div class="next-action">
+            <strong data-i18n-zh="下一步：先確認資料是否完整" data-i18n-en="Next: check whether the application is complete">下一步：先確認資料是否完整 / Next: check whether the application is complete</strong>
+            <span data-i18n-zh="若資料不足，先聯絡申請者補資料；完整後再安排面試或審核。" data-i18n-en="If information is missing, contact the applicant first. Then move the application to interview or review.">若資料不足，先聯絡申請者補資料；完整後再安排面試或審核。</span>
           </div>
 
           <div class="detail-grid">
             <div><span>Player ID</span><strong>1234567890</strong></div>
-            <div><span>Current State</span><strong>621</strong></div>
-            <div><span>Current Alliance</span><strong>EXM</strong></div>
-            <div><span>Total Power</span><strong>245M</strong></div>
-            <div><span>Kills</span><strong>3.2M</strong></div>
-            <div><span>Main Troop</span><strong>Warrior</strong></div>
-            <div><span>Watchtower</span><strong>Industrial 2</strong></div>
-            <div><span>Interest</span><strong>Definitely interested</strong></div>
-            <div><span>Group Size</span><strong>2–5 players</strong></div>
-            <div><span>Activity</span><strong>Highly active</strong></div>
-            <div><span>Management</span><strong>R4</strong></div>
-            <div><span>Active Time</span><strong>05ST–09ST</strong></div>
+            <div><span data-i18n-zh="目前州" data-i18n-en="Current State">目前州 / Current State</span><strong>621</strong></div>
+            <div><span data-i18n-zh="目前聯盟" data-i18n-en="Current Alliance">目前聯盟 / Current Alliance</span><strong>EXM</strong></div>
+            <div><span data-i18n-zh="總戰力" data-i18n-en="Total Power">總戰力 / Total Power</span><strong>245M</strong></div>
+            <div><span data-i18n-zh="擊殺數" data-i18n-en="Kills">擊殺數 / Kills</span><strong>3.2M</strong></div>
+            <div><span data-i18n-zh="主力兵種" data-i18n-en="Main Troop">主力兵種 / Main Troop</span><strong data-i18n-zh="勇士" data-i18n-en="Warrior">勇士 / Warrior</strong></div>
+            <div><span data-i18n-zh="瞭望塔等級" data-i18n-en="Watchtower">瞭望塔等級 / Watchtower</span><strong data-i18n-zh="工業2" data-i18n-en="Industrial 2">工業2 / Industrial 2</strong></div>
+            <div><span data-i18n-zh="移民意願" data-i18n-en="Interest">移民意願 / Interest</span><strong data-i18n-zh="確定想來" data-i18n-en="Definitely interested">確定想來 / Definitely interested</strong></div>
+            <div><span data-i18n-zh="同行人數" data-i18n-en="Group Size">同行人數 / Group Size</span><strong data-i18n-zh="2–5 人" data-i18n-en="2–5 players">2–5 人 / 2–5 players</strong></div>
+            <div><span data-i18n-zh="活躍程度" data-i18n-en="Activity">活躍程度 / Activity</span><strong data-i18n-zh="積極參與" data-i18n-en="Highly active">積極參與 / Highly active</strong></div>
+            <div><span data-i18n-zh="管理經驗" data-i18n-en="Management">管理經驗 / Management</span><strong>R4</strong></div>
+            <div><span data-i18n-zh="活躍時間" data-i18n-en="Active Time">活躍時間 / Active Time</span><strong>05ST–09ST</strong></div>
           </div>
 
           <div class="group-warning">
-            <strong>Group member details pending</strong>
-            <span>同行者資料尚未提供</span>
+            <strong data-i18n-zh="同行者資料尚未提供" data-i18n-en="Group member details pending">同行者資料尚未提供 / Group member details pending</strong>
+            <span data-i18n-zh="這筆申請需要先向申請者索取同行名單。" data-i18n-en="Ask the applicant for the group member list before continuing.">這筆申請需要先向申請者索取同行名單。</span>
           </div>
 
-          <label class="manager-field">Reviewer / 負責人
-            <input type="text" value="Tina1227" placeholder="Manager name">
+          <label class="manager-field"><span data-i18n-zh="負責人" data-i18n-en="Reviewer">負責人 / Reviewer</span>
+            <input type="text" value="Tina1227" data-placeholder-zh="輸入負責人名稱" data-placeholder-en="Manager name" placeholder="輸入負責人名稱 / Manager name">
           </label>
 
-          <label class="manager-field">Status / 申請狀態
+          <label class="manager-field"><span data-i18n-zh="申請狀態" data-i18n-en="Status">申請狀態 / Status</span>
             <select>
-              <option>Received</option>
-              <option>Awaiting Interview</option>
-              <option>Under Review</option>
-              <option>Approved</option>
-              <option>Waitlist</option>
-              <option>Declined</option>
+              <option value="Received" data-i18n-zh="已收到" data-i18n-en="Received">已收到 / Received</option>
+              <option value="Awaiting Interview" data-i18n-zh="等候面試" data-i18n-en="Awaiting Interview">等候面試 / Awaiting Interview</option>
+              <option value="Under Review" data-i18n-zh="審核中" data-i18n-en="Under Review">審核中 / Under Review</option>
+              <option value="Approved" data-i18n-zh="已通過" data-i18n-en="Approved">已通過 / Approved</option>
+              <option value="Waitlist" data-i18n-zh="候補" data-i18n-en="Waitlist">候補 / Waitlist</option>
+              <option value="Declined" data-i18n-zh="未通過" data-i18n-en="Declined">未通過 / Declined</option>
             </select>
           </label>
 
-          <label class="manager-field">Internal Notes / 內部備註
-            <textarea placeholder="Visible to alliance management only."></textarea>
+          <label class="manager-field"><span data-i18n-zh="內部備註" data-i18n-en="Internal Notes">內部備註 / Internal Notes</span>
+            <textarea data-placeholder-zh="只有聯盟管理者看得到" data-placeholder-en="Visible to alliance management only" placeholder="只有聯盟管理者看得到 / Visible to alliance management only"></textarea>
           </label>
 
           <div class="detail-actions">
-            <button class="ghost-button" type="button">Request More Information</button>
-            <button class="save-button" type="button">Save Review</button>
+            <button class="ghost-button" type="button" data-i18n-zh="要求補資料" data-i18n-en="Request More Information">要求補資料 / Request More Information</button>
+            <button class="save-button" type="button" data-i18n-zh="儲存審核" data-i18n-en="Save Review">儲存審核 / Save Review</button>
           </div>
         </aside>
       </div>
@@ -210,7 +192,7 @@
 
   <audio id="site-bgm" src="audio/bgm.mp3" preload="auto" autoplay loop></audio>
   <script src="site.js?v=20261015-1335"></script>
-  <script src="management.js?v=20261017-2200"></script>
-  <script src="language.js?v=20261017-2245"></script>
+  <script src="management.js?v=20261017-2305"></script>
+  <script src="language.js?v=20261017-2305"></script>
 </body>
 </html>

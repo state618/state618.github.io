@@ -468,3 +468,29 @@ h1 {
   .language-switcher{top:auto;bottom:16px;right:12px}
   .language-menu{top:auto;bottom:42px}
 }
+
+/* Language selector contrast revision */
+.language-switcher summary{
+  border-color:rgba(35,28,39,.16);
+  background:rgba(250,247,251,.96);
+  color:#251e28;
+  box-shadow:0 8px 22px rgba(0,0,0,.18);
+}
+.language-switcher summary span{color:#766d79}
+.language-switcher summary strong{color:#5d3f58}
+.language-menu{
+  border-color:rgba(35,28,39,.12);
+  background:#fbf8fc;
+  box-shadow:0 18px 36px rgba(0,0,0,.24);
+}
+.language-option{color:#302733}
+.language-option:hover,.language-option.active{
+  background:#ead8e6;
+  color:#2a1f2a;
+}
+.language-coming{
+  color:#817786;
+  border-top:1px solid rgba(35,28,39,.08);
+  margin-top:5px;
+  padding-top:10px;
+}

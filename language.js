@@ -147,6 +147,82 @@
     }
   };
 
+  const PAGE_T = {
+    ja: {
+      'HOW IT WORKS':'申請の流れ',
+      'What happens next':'申請後の流れ',
+      'Submit your application, wait for review, and check your progress anytime with your Player ID.':'申請を送信した後は審査を待ち、Player IDでいつでも進捗を確認できます。',
+      'Submit your application':'申請を送信',
+      'Complete your migration interest and basic information, then submit your application.':'移民意向と基本情報を入力して、618への移民申請を送信してください。',
+      'Review & interview':'審査と面談',
+      'State 618 staff will review your application; if you selected an alliance, its management team will contact you for an interview.':'State 618の管理チームが申請を審査します。希望同盟を選択した場合は、その同盟の管理者が連絡し、面談を調整します。',
+      'Check your status':'進捗を確認',
+      'Use your Player ID to check your status anytime and wait for further contact.':'Player IDを使っていつでも申請状況を確認し、次の連絡をお待ちください。',
+      'Please be patient while your application is being reviewed. If you selected a preferred alliance, the appropriate alliance representative will contact you when necessary.':'申請の審査中はしばらくお待ちください。希望同盟を選択した場合、必要に応じて該当同盟の担当者から連絡します。'
+    },
+    ko: {
+      'HOW IT WORKS':'신청 절차',
+      'What happens next':'신청 후 절차',
+      'Submit your application, wait for review, and check your progress anytime with your Player ID.':'신청서를 제출한 뒤 심사를 기다리고, Player ID로 언제든 진행 상황을 확인할 수 있습니다.',
+      'Submit your application':'신청서 제출',
+      'Complete your migration interest and basic information, then submit your application.':'이민 의향과 기본 정보를 작성한 후 618 이민 신청서를 제출하세요.',
+      'Review & interview':'심사 및 인터뷰',
+      'State 618 staff will review your application; if you selected an alliance, its management team will contact you for an interview.':'State 618 운영진이 신청서를 검토합니다. 희망 연맹을 선택했다면 해당 연맹 관리진이 연락하여 인터뷰를 진행합니다.',
+      'Check your status':'진행 상황 확인',
+      'Use your Player ID to check your status anytime and wait for further contact.':'Player ID로 언제든 신청 진행 상황을 확인하고 후속 연락을 기다려 주세요.',
+      'Please be patient while your application is being reviewed. If you selected a preferred alliance, the appropriate alliance representative will contact you when necessary.':'신청 심사 중에는 잠시 기다려 주세요. 희망 연맹을 선택했다면 필요할 때 해당 연맹 담당자가 연락드립니다.'
+    },
+    es: {
+      'HOW IT WORKS':'CÓMO FUNCIONA',
+      'What happens next':'Qué sucede después',
+      'Submit your application, wait for review, and check your progress anytime with your Player ID.':'Envía tu solicitud, espera la revisión y consulta tu progreso en cualquier momento con tu Player ID.',
+      'Submit your application':'Envía tu solicitud',
+      'Complete your migration interest and basic information, then submit your application.':'Completa tu interés de migración y tus datos básicos, y después envía tu solicitud para el Estado 618.',
+      'Review & interview':'Revisión y entrevista',
+      'State 618 staff will review your application; if you selected an alliance, its management team will contact you for an interview.':'El equipo del Estado 618 revisará tu solicitud. Si elegiste una alianza, su equipo de gestión se pondrá en contacto contigo para una entrevista.',
+      'Check your status':'Consulta tu estado',
+      'Use your Player ID to check your status anytime and wait for further contact.':'Usa tu Player ID para consultar el estado de tu solicitud en cualquier momento y espera el próximo contacto.',
+      'Please be patient while your application is being reviewed. If you selected a preferred alliance, the appropriate alliance representative will contact you when necessary.':'Ten paciencia mientras revisamos tu solicitud. Si elegiste una alianza preferida, su representante se pondrá en contacto contigo cuando sea necesario.'
+    },
+    pt: {
+      'HOW IT WORKS':'COMO FUNCIONA',
+      'What happens next':'O que acontece depois',
+      'Submit your application, wait for review, and check your progress anytime with your Player ID.':'Envie sua solicitação, aguarde a análise e acompanhe o progresso a qualquer momento com seu Player ID.',
+      'Submit your application':'Envie sua solicitação',
+      'Complete your migration interest and basic information, then submit your application.':'Preencha seu interesse em migrar e as informações básicas e, em seguida, envie sua solicitação para o Estado 618.',
+      'Review & interview':'Análise e entrevista',
+      'State 618 staff will review your application; if you selected an alliance, its management team will contact you for an interview.':'A equipe do Estado 618 analisará sua solicitação. Se você escolheu uma aliança, a gestão dessa aliança entrará em contato para uma entrevista.',
+      'Check your status':'Consulte seu status',
+      'Use your Player ID to check your status anytime and wait for further contact.':'Use seu Player ID para consultar o status da solicitação a qualquer momento e aguarde o próximo contato.',
+      'Please be patient while your application is being reviewed. If you selected a preferred alliance, the appropriate alliance representative will contact you when necessary.':'Aguarde enquanto sua solicitação é analisada. Se você escolheu uma aliança preferida, o representante correspondente entrará em contato quando necessário.'
+    },
+    fr: {
+      'HOW IT WORKS':'COMMENT ÇA MARCHE',
+      'What happens next':'Que se passe-t-il ensuite ?',
+      'Submit your application, wait for review, and check your progress anytime with your Player ID.':'Envoyez votre candidature, attendez son examen et suivez son avancement à tout moment avec votre Player ID.',
+      'Submit your application':'Envoyez votre candidature',
+      'Complete your migration interest and basic information, then submit your application.':'Indiquez votre intérêt pour la migration et vos informations de base, puis envoyez votre candidature pour l’État 618.',
+      'Review & interview':'Examen et entretien',
+      'State 618 staff will review your application; if you selected an alliance, its management team will contact you for an interview.':'L’équipe de l’État 618 examinera votre candidature. Si vous avez choisi une alliance, son équipe de gestion vous contactera pour un entretien.',
+      'Check your status':'Consultez votre statut',
+      'Use your Player ID to check your status anytime and wait for further contact.':'Utilisez votre Player ID pour consulter votre statut à tout moment et attendez la suite des échanges.',
+      'Please be patient while your application is being reviewed. If you selected a preferred alliance, the appropriate alliance representative will contact you when necessary.':'Merci de patienter pendant l’examen de votre candidature. Si vous avez choisi une alliance préférée, son représentant vous contactera si nécessaire.'
+    },
+    de: {
+      'HOW IT WORKS':'SO FUNKTIONIERT ES',
+      'What happens next':'Wie geht es weiter?',
+      'Submit your application, wait for review, and check your progress anytime with your Player ID.':'Sende deinen Antrag ab, warte auf die Prüfung und überprüfe deinen Fortschritt jederzeit mit deiner Player ID.',
+      'Submit your application':'Antrag absenden',
+      'Complete your migration interest and basic information, then submit your application.':'Fülle dein Migrationsinteresse und deine Basisdaten aus und sende anschließend deinen Antrag für State 618 ab.',
+      'Review & interview':'Prüfung und Gespräch',
+      'State 618 staff will review your application; if you selected an alliance, its management team will contact you for an interview.':'Das Team von State 618 prüft deinen Antrag. Wenn du eine Allianz ausgewählt hast, wird deren Management dich für ein Gespräch kontaktieren.',
+      'Check your status':'Status prüfen',
+      'Use your Player ID to check your status anytime and wait for further contact.':'Mit deiner Player ID kannst du deinen Status jederzeit prüfen und auf die weitere Kontaktaufnahme warten.',
+      'Please be patient while your application is being reviewed. If you selected a preferred alliance, the appropriate alliance representative will contact you when necessary.':'Bitte habe etwas Geduld, während dein Antrag geprüft wird. Wenn du eine bevorzugte Allianz gewählt hast, meldet sich deren zuständige Person bei Bedarf.'
+    }
+  };
+  Object.keys(PAGE_T).forEach((lang) => Object.assign(T[lang], PAGE_T[lang]));
+
   const han = /[\u3400-\u9fff]/;
   const splitNodes = [];
   const languageOnly = [];

@@ -86,3 +86,9 @@
 .applicant-card.shared-candidate::after{content:"SHARED";position:absolute;right:12px;bottom:10px;color:#d5a973;font-size:9px;font-weight:900;letter-spacing:.08em}
 
 .manager-login[hidden],.dashboard[hidden]{display:none!important}
+
+.info-request-summary[hidden]{display:none!important}
+.shared-offer-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.shared-offer-actions .save-button,.shared-offer-actions .ghost-button{width:100%}
+#alliance-pass-button.pass-active{border-color:rgba(220,135,145,.55);background:rgba(150,62,73,.18);color:#f0c6cb}
+@media(max-width:640px){.shared-offer-actions{grid-template-columns:1fr}}

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#151018">
   <title>STATE 618 | Alliance Management</title>
   <link rel="stylesheet" href="styles.css?v=20261017-2305">
-  <link rel="stylesheet" href="management.css?v=20261018-2300">
+  <link rel="stylesheet" href="management.css?v=20261019-0008">
 </head>
 <body class="management-page">
   <div class="management-bg"></div>
@@ -159,7 +159,10 @@
           <div class="shared-offer-panel" id="shared-offer-panel" hidden>
             <strong>共享候選人 / Shared Candidate</strong>
             <span>此申請者尚未決定聯盟。若你的聯盟願意接收，送出 Offer 後申請者會在查詢頁看到並自行選擇。</span>
-            <button class="save-button" id="alliance-offer-button" type="button">願意接收 / Send Offer</button>
+            <div class="shared-offer-actions">
+              <button class="save-button" id="alliance-offer-button" type="button">願意接收 / Send Offer</button>
+              <button class="ghost-button" id="alliance-pass-button" type="button">PASS / 暫不接收</button>
+            </div>
           </div>
 
           <div class="manager-field responsible-alliance-field">
@@ -227,7 +230,7 @@
 
   <audio id="site-bgm" src="audio/bgm.mp3" preload="auto" autoplay loop></audio>
   <script src="site.js?v=20261015-1335"></script>
-  <script src="management.js?v=20261018-2245"></script>
+  <script src="management.js?v=20261019-0008"></script>
   <script src="language.js?v=20261017-2305"></script>
 </body>
 </html>

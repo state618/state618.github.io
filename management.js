@@ -27,6 +27,7 @@
   const historyList=document.getElementById('activity-history-list');
   const sharedOfferPanel=document.getElementById('shared-offer-panel');
   const allianceOfferButton=document.getElementById('alliance-offer-button');
+  const alliancePassButton=document.getElementById('alliance-pass-button');
   const reviewStatusField=document.getElementById('review-status-field');
   const internalNotesField=document.getElementById('internal-notes-field');
   const standardReviewActions=document.getElementById('standard-review-actions');
@@ -251,6 +252,12 @@
       allianceOfferButton.textContent=app.currentAllianceOffer?'撤回接收意願 / Withdraw Offer':'願意接收 / Send Offer';
       allianceOfferButton.classList.toggle('ghost-button',Boolean(app.currentAllianceOffer));
       allianceOfferButton.classList.toggle('save-button',!app.currentAllianceOffer);
+      allianceOfferButton.disabled=Boolean(app.currentAlliancePass);
+    }
+    if(alliancePassButton){
+      alliancePassButton.textContent=app.currentAlliancePass?'取消 PASS / Clear Pass':'PASS / 暫不接收';
+      alliancePassButton.classList.toggle('pass-active',Boolean(app.currentAlliancePass));
+      alliancePassButton.disabled=Boolean(app.currentAllianceOffer);
     }
 
     if(statusSelect)statusSelect.value=app.status||'Under Review';
@@ -300,6 +307,7 @@
 
     const button=action==='save'?saveButton:
       action==='requestInfo'?requestInfoButton:
+      (action==='pass'||action==='clearPass')?alliancePassButton:
       allianceOfferButton;
     const oldText=button?button.textContent:'';
     if(button){
@@ -382,6 +390,11 @@
     const app=selectedApplication();
     if(!app)return;
     updateApplication(app.currentAllianceOffer?'withdrawOffer':'offer');
+  });
+  if(alliancePassButton)alliancePassButton.addEventListener('click',function(){
+    const app=selectedApplication();
+    if(!app)return;
+    updateApplication(app.currentAlliancePass?'clearPass':'pass');
   });
   if(requestInfoButton)requestInfoButton.addEventListener('click',function(){
     if(!requireOperator())return;

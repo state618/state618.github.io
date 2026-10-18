@@ -92,3 +92,9 @@
 .shared-offer-actions .save-button,.shared-offer-actions .ghost-button{width:100%}
 #alliance-pass-button.pass-active{border-color:rgba(220,135,145,.55);background:rgba(150,62,73,.18);color:#f0c6cb}
 @media(max-width:640px){.shared-offer-actions{grid-template-columns:1fr}}
+
+.applicant-message-panel{display:grid;gap:12px;margin:18px 0}
+.applicant-message-panel[hidden],.applicant-message-block[hidden]{display:none!important}
+.applicant-message-block{padding:15px 16px;border:1px solid rgba(200,137,184,.28);border-left:4px solid rgba(200,137,184,.82);border-radius:8px;background:rgba(200,137,184,.07)}
+.applicant-message-block strong{display:block;margin-bottom:7px;color:#efd7ea;font-size:13px}
+.applicant-message-block p{margin:0;color:#eee7ee;font-size:13px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}

@@ -24,6 +24,11 @@
   const reviewStatusField=document.getElementById('review-status-field');
   const internalNotesField=document.getElementById('internal-notes-field');
   const standardReviewActions=document.getElementById('standard-review-actions');
+  const applicantMessagePanel=document.getElementById('applicant-message-panel');
+  const applicantQuestionsBlock=document.getElementById('applicant-questions-block');
+  const applicantQuestionsText=document.getElementById('applicant-questions-text');
+  const applicantNotesBlock=document.getElementById('applicant-notes-block');
+  const applicantNotesText=document.getElementById('applicant-notes-text');
   const statusSelect=detail?detail.querySelector('#review-status-field select'):null;
   const notesField=detail?detail.querySelector('#internal-notes-field textarea'):null;
 
@@ -240,6 +245,14 @@
       alliancePassButton.classList.toggle('pass-active',Boolean(app.currentAlliancePass));
       alliancePassButton.disabled=Boolean(app.currentAllianceOffer);
     }
+
+    const hasQuestions=Boolean(String(app.questions||'').trim());
+    const hasApplicantNotes=Boolean(String(app.applicantNotes||'').trim());
+    if(applicantMessagePanel)applicantMessagePanel.hidden=!(hasQuestions||hasApplicantNotes);
+    if(applicantQuestionsBlock)applicantQuestionsBlock.hidden=!hasQuestions;
+    if(applicantQuestionsText)applicantQuestionsText.textContent=hasQuestions?app.questions:'';
+    if(applicantNotesBlock)applicantNotesBlock.hidden=!hasApplicantNotes;
+    if(applicantNotesText)applicantNotesText.textContent=hasApplicantNotes?app.applicantNotes:'';
 
     if(statusSelect)statusSelect.value=app.status||'Under Review';
     if(notesField)notesField.value=app.internalNotes||'';

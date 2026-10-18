@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#151018">
   <title>STATE 618 | Alliance Management</title>
   <link rel="stylesheet" href="styles.css?v=20261017-2305">
-  <link rel="stylesheet" href="management.css?v=20261019-0235">
+  <link rel="stylesheet" href="management.css?v=20261019-0255">
 </head>
 <body class="management-page">
   <div class="management-bg"></div>
@@ -151,6 +151,17 @@
             <span data-i18n-zh="同行成員請使用此團隊邀請碼各自提交申請。" data-i18n-en="Group members should submit their own applications using this invite code.">同行成員請使用此團隊邀請碼各自提交申請。 / Group members should submit their own applications using this invite code.</span>
           </div>
 
+          <section class="applicant-message-panel" id="applicant-message-panel" hidden>
+            <div class="applicant-message-block" id="applicant-questions-block" hidden>
+              <strong>想了解的內容 / Questions</strong>
+              <p id="applicant-questions-text"></p>
+            </div>
+            <div class="applicant-message-block" id="applicant-notes-block" hidden>
+              <strong>申請者留言 / Applicant Message</strong>
+              <p id="applicant-notes-text"></p>
+            </div>
+          </section>
+
           <div class="shared-offer-panel" id="shared-offer-panel" hidden>
             <strong>共享候選人 / Shared Candidate</strong>
             <span>此申請者尚未決定聯盟。若你的聯盟願意接收，送出 Offer 後申請者會在查詢頁看到並自行選擇。</span>
@@ -206,7 +217,7 @@
 
   <audio id="site-bgm" src="audio/bgm.mp3" preload="auto" autoplay loop></audio>
   <script src="site.js?v=20261015-1335"></script>
-  <script src="management.js?v=20261019-0235"></script>
+  <script src="management.js?v=20261019-0255"></script>
   <script src="language.js?v=20261017-2305"></script>
 </body>
 </html>

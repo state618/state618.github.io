@@ -54,8 +54,8 @@
           <input type="number" name="current_state" min="1" required>
         </label>
 
-        <label>目前聯盟 / Current Alliance
-          <input type="text" name="current_alliance">
+        <label>目前聯盟 / Current Alliance <b>*</b>
+          <input type="text" name="current_alliance" required placeholder="若無聯盟請填 無 / None">
         </label>
 
         <label class="group-code-field">
@@ -72,12 +72,12 @@
           <input type="text" name="total_power" required>
         </label>
 
-        <label>擊殺數 / Kills
-          <input type="text" name="kills">
+        <label>擊殺數 / Kills <b>*</b>
+          <input type="text" name="kills" required>
         </label>
 
-        <label>主力兵種 / Main Troop Type
-          <select name="main_troop">
+        <label>主力兵種 / Main Troop Type <b>*</b>
+          <select name="main_troop" required>
             <option value="">請選擇 / Select</option>
             <option value="勇士">勇士 / Warrior</option>
             <option value="射手">射手 / Shooter</option>
@@ -85,8 +85,8 @@
           </select>
         </label>
 
-        <label>瞭望塔等級 / Watchtower Level
-          <select name="watchtower_level">
+        <label>瞭望塔等級 / Watchtower Level <b>*</b>
+          <select name="watchtower_level" required>
             <option value="">請選擇 / Select</option>
             <option>24</option><option>25</option><option>26</option><option>27</option>
             <option>28</option><option>29</option><option>30</option>
@@ -107,8 +107,8 @@
           </select>
         </label>
 
-        <label id="group-size-field">預計同行人數 / Expected Group Size
-          <select name="group_size" id="group-size">
+        <label id="group-size-field">預計同行人數 / Expected Group Size <b>*</b>
+          <select name="group_size" id="group-size" required>
             <option value="">請選擇 / Select</option>
             <option value="自己">自己 / Solo</option>
             <option value="2–5 人">2–5 人 / 2–5 players</option>
@@ -149,12 +149,12 @@
       <fieldset>
         <legend><span>04</span> 活動與適配 / Activity</legend>
 
-        <label>平常活躍時段（伺服器時間） / Usual Active Hours (Server Time)
-          <input type="text" name="active_time" placeholder="例如 / e.g. 12:00–16:00">
+        <label>平常活躍時段（伺服器時間） / Usual Active Hours (Server Time) <b>*</b>
+          <input type="text" name="active_time" required placeholder="例如 / e.g. 12:00–16:00">
         </label>
 
-        <label>對聯盟／州活動參與程度 / Alliance &amp; State Event Participation
-          <select name="activity_level">
+        <label>對聯盟／州活動參與程度 / Alliance &amp; State Event Participation <b>*</b>
+          <select name="activity_level" required>
             <option value="">請選擇 / Select</option>
             <option value="積極參與（每個活動都參與）">積極參與（每個活動都參與） / Highly active (join every event)</option>
             <option value="活躍">活躍 / Active</option>
@@ -164,8 +164,8 @@
           </select>
         </label>
 
-        <label>是否曾擔任聯盟管理 / Alliance Management Experience
-          <select name="management">
+        <label>是否曾擔任聯盟管理 / Alliance Management Experience <b>*</b>
+          <select name="management" required>
             <option value="">請選擇 / Select</option>
             <option>R5</option>
             <option>R4</option>
@@ -209,7 +209,7 @@
   <footer class="site-footer">
     <span>STATE 618</span><span class="dot">•</span><span>Migration Interest</span>
   </footer>
-  <script src="site.js?v=20261018-2245"></script>
+  <script src="site.js?v=20261019-0235"></script>
   <script src="language.js?v=20261017-2245"></script>
 </body>
 </html>

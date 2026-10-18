@@ -184,7 +184,6 @@ function wireCopyButtons(root) {
       row('希望聯盟 / Preferred Alliance', escapeHtml(data.preferredAlliance || '—')),
       data.chosenAlliance ? row('已選擇聯盟 / Chosen Alliance', escapeHtml(data.chosenAlliance)) : '',
       data.groupCode ? groupCodeCard(data.groupCode) : '',
-      data.infoRequest && data.infoRequest.pending ? infoRequestBlock(data.infoRequest) : '',
       offerChoiceBlock(data),
       row('狀態 / Status', '<span class="badge ' + statusClass(data.status) + '">' + escapeHtml(statusLabel(data.status)) + '</span>'),
       row('送出時間 / Submitted', escapeHtml(data.submittedAt || '—')),

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#151018">
   <title>STATE 618 | Alliance Management</title>
   <link rel="stylesheet" href="styles.css?v=20261017-2305">
-  <link rel="stylesheet" href="management.css?v=20261019-0008">
+  <link rel="stylesheet" href="management.css?v=20261019-0235">
 </head>
 <body class="management-page">
   <div class="management-bg"></div>
@@ -126,12 +126,12 @@
           </div>
 
           <div class="next-action">
-            <strong data-i18n-zh="下一步：先確認資料是否完整" data-i18n-en="Next: check whether the application is complete">下一步：先確認資料是否完整 / Next: check whether the application is complete</strong>
-            <span data-i18n-zh="若資料不足，先聯絡申請者補資料；資料完整後直接進入審核。" data-i18n-en="If information is missing, contact the applicant first. Once complete, continue the review.">若資料不足，先聯絡申請者補資料；資料完整後直接進入審核。</span>
+            <strong data-i18n-zh="下一步：確認申請內容並做出審核決定" data-i18n-en="Next: review the application and make a decision">下一步：確認申請內容並做出審核決定 / Next: review the application and make a decision</strong>
+            <span data-i18n-zh="必要欄位已在申請端檢查；管理者可直接進行審核。" data-i18n-en="Required fields are validated before submission, so managers can review directly.">必要欄位已在申請端檢查；管理者可直接進行審核。 / Required fields are validated before submission.</span>
           </div>
 
           <div class="detail-grid">
-            <div><span>Player ID</span><strong>1234567890</strong></div>
+            <div><span>Player ID（部分隱藏） / Masked</span><strong>••••••7890</strong></div>
             <div><span data-i18n-zh="目前州" data-i18n-en="Current State">目前州 / Current State</span><strong>621</strong></div>
             <div><span data-i18n-zh="目前聯盟" data-i18n-en="Current Alliance">目前聯盟 / Current Alliance</span><strong>EXM</strong></div>
             <div><span data-i18n-zh="總戰力" data-i18n-en="Total Power">總戰力 / Total Power</span><strong>245M</strong></div>
@@ -147,13 +147,8 @@
           </div>
 
           <div class="group-warning">
-            <strong data-i18n-zh="同行者資料尚未提供" data-i18n-en="Group member details pending">同行者資料尚未提供 / Group member details pending</strong>
-            <span data-i18n-zh="這筆申請需要先向申請者索取同行名單。" data-i18n-en="Ask the applicant for the group member list before continuing.">這筆申請需要先向申請者索取同行名單。</span>
-          </div>
-
-          <div class="info-request-summary" id="info-request-summary" hidden>
-            <strong>等待申請者補資料 / Waiting for applicant update</strong>
-            <span id="info-request-summary-text"></span>
+            <strong data-i18n-zh="團隊申請" data-i18n-en="Group Application">團隊申請 / Group Application</strong>
+            <span data-i18n-zh="同行成員請使用此團隊邀請碼各自提交申請。" data-i18n-en="Group members should submit their own applications using this invite code.">同行成員請使用此團隊邀請碼各自提交申請。 / Group members should submit their own applications using this invite code.</span>
           </div>
 
           <div class="shared-offer-panel" id="shared-offer-panel" hidden>
@@ -189,7 +184,6 @@
           </label>
 
           <div class="detail-actions" id="standard-review-actions">
-            <button class="ghost-button" id="request-info-button" type="button" data-i18n-zh="要求補資料" data-i18n-en="Request More Information">要求補資料 / Request More Information</button>
             <button class="save-button" id="save-review-button" type="button" data-i18n-zh="儲存審核" data-i18n-en="Save Review">儲存審核 / Save Review</button>
           </div>
 
@@ -210,27 +204,9 @@
     </section>
   </main>
 
-  <div class="request-info-modal" id="request-info-modal" hidden>
-    <div class="request-info-dialog" role="dialog" aria-modal="true" aria-labelledby="request-info-title">
-      <h3 id="request-info-title">要求補資料 / Request More Information</h3>
-      <p>選擇需要申請者補充的內容，可另外留下說明。這不會改變目前審核狀態。</p>
-      <div class="request-info-options">
-        <label class="request-info-option"><input type="checkbox" value="團隊／同行資料 / Group members"> <span>團隊／同行資料 / Group members</span></label>
-        <label class="request-info-option"><input type="checkbox" value="Player ID／基本資料 / Player ID or profile"> <span>Player ID／基本資料 / Player ID or profile</span></label>
-        <label class="request-info-option"><input type="checkbox" value="戰力／擊殺資料 / Power or kills"> <span>戰力／擊殺資料 / Power or kills</span></label>
-        <label class="request-info-option"><input type="checkbox" value="其他 / Other"> <span>其他 / Other</span></label>
-      </div>
-      <textarea id="request-info-message" placeholder="補充說明 / Additional message"></textarea>
-      <div class="request-info-actions">
-        <button class="ghost-button" id="request-info-cancel" type="button">取消 / Cancel</button>
-        <button class="save-button" id="request-info-confirm" type="button">送出補件要求 / Send Request</button>
-      </div>
-    </div>
-  </div>
-
   <audio id="site-bgm" src="audio/bgm.mp3" preload="auto" autoplay loop></audio>
   <script src="site.js?v=20261015-1335"></script>
-  <script src="management.js?v=20261019-0008"></script>
+  <script src="management.js?v=20261019-0235"></script>
   <script src="language.js?v=20261017-2305"></script>
 </body>
 </html>

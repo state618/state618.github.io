@@ -523,7 +523,7 @@ textarea {
 .submit-success-title{margin-bottom:14px;color:#d9f0df;font-size:15px;font-weight:800}
 .group-code-card{margin:18px 0;padding:22px 18px;border:1px solid rgba(232,170,216,.48);border-radius:12px;background:linear-gradient(180deg,rgba(200,137,184,.16),rgba(200,137,184,.07));box-shadow:0 14px 34px rgba(0,0,0,.20),inset 0 0 0 1px rgba(255,255,255,.03);text-align:center}
 .group-code-eyebrow{display:block;margin-bottom:9px;color:#d8c6d7;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-.group-code-value{display:block;color:#fff;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(32px,8vw,50px);line-height:1.08;letter-spacing:.08em;text-shadow:0 0 18px rgba(232,170,216,.22)}
+.group-code-value{display:block;color:#fff;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(32px,8vw,50px);font-weight:500;line-height:1.12;letter-spacing:.14em;font-variant-numeric:tabular-nums;text-shadow:none;-webkit-font-smoothing:antialiased}
 .group-code-card p{margin:14px auto 0;max-width:650px;color:#d7ced8;font-size:13px;line-height:1.65}
 .group-code-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px}
 .group-copy-button{padding:10px 14px;border:1px solid rgba(255,255,255,.18);border-radius:7px;background:#1a151c;color:#f4edf4;font:inherit;font-size:12px;font-weight:800;cursor:pointer}

@@ -34,11 +34,11 @@
 
   const allianceNames={
     RZN:'Risen','3311':'青丘寨',RoD:'Reign of Dragons',RAW:'War Dominion',
-    UNQ:'UNQUESTIONED',KNT:'Knights of Round',WofA:'Wolves of Anarchy',
+    RZNA:'Risen Academy',KNT:'Knights of Round',WofA:'Wolves of Anarchy',
     S_B:'Storm Bringers',RnB:'ReBoRN BiO',TCB:'VenomousSlayers'
   };
   const allianceTags={
-    RZN:'RZN','3311':'3311',RoD:'RoD!',RAW:'RAW$',UNQ:'UNQ.',
+    RZN:'RZN','3311':'3311',RoD:'RoD!',RAW:'RAW$',RZNA:'RZNA',
     KNT:'KNT',WofA:'WofA',S_B:'S_B',RnB:'RnB',TCB:'TCB'
   };
 

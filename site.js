@@ -2,6 +2,10 @@ const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwSZMVKwKpnsWP6gzwR
 
 const backendReady = WEB_APP_URL.startsWith('https://script.google.com/macros/s/');
 
+function tr(en, zh) {
+  return window.STATE618_I18N ? window.STATE618_I18N.translate(en, zh) : (zh + ' / ' + en);
+}
+
 function setSubmitMessage(text, type = '') {
   const el = document.getElementById('submit-result');
   if (!el) return;
@@ -274,27 +278,28 @@ function wireCopyButtons(root) {
   }
 
   function statusLabel(status) {
-    const map = {
-      'Received': 'Received · 已收到申請',
-      'Awaiting Interview': 'Awaiting Interview · 等候面試',
-      'Under Review': 'Under Review · 審核中',
-      'Approved': 'Approved · 已通過',
-      'Waitlist': 'Waitlist · 候補中',
-      'Declined': 'Declined · 未通過'
+    const zh = {
+      'Received': '已收到申請',
+      'Awaiting Interview': '等候面試',
+      'Under Review': '審核中',
+      'Approved': '已通過',
+      'Waitlist': '候補中',
+      'Declined': '未通過'
     };
-    return map[status] || status || 'Received';
+    return tr(status || 'Received', zh[status] || status || '已收到申請');
   }
 
   function statusMessage(status) {
     const map = {
-      'Received': '申請已收到，請耐心等候專人聯繫。',
-      'Awaiting Interview': '目前正等待指定聯盟管理人員聯繫並安排面試，請耐心等候。',
-      'Under Review': '申請正在審核中，請耐心等候專人通知。',
-      'Approved': '申請已通過，請留意後續聯繫與移民安排。',
-      'Waitlist': '目前列入候補名單，請耐心等候後續通知。',
-      'Declined': '本次申請未通過；若有疑問，請聯繫 618 管理人員。'
+      'Received': ['Application received. Please wait for further contact.', '申請已收到，請耐心等候專人聯繫。'],
+      'Awaiting Interview': ['Please wait for the selected alliance management to contact you and arrange an interview.', '目前正等待指定聯盟管理人員聯繫並安排面試，請耐心等候。'],
+      'Under Review': ['Your application is under review. Please wait for further notice.', '申請正在審核中，請耐心等候專人通知。'],
+      'Approved': ['Your application has been approved. Please watch for migration arrangements.', '申請已通過，請留意後續聯繫與移民安排。'],
+      'Waitlist': ['You are currently on the waitlist. Please wait for further notice.', '目前列入候補名單，請耐心等候後續通知。'],
+      'Declined': ['This application was not approved. Please contact State 618 management if you have questions.', '本次申請未通過；若有疑問，請聯繫 618 管理人員。']
     };
-    return map[status] || '請耐心等候專人通知。';
+    const pair = map[status] || ['Please wait for further notice.', '請耐心等候專人通知。'];
+    return tr(pair[0], pair[1]);
   }
 })();
 

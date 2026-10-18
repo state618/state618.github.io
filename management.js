@@ -74,6 +74,7 @@
 
   function statusText(status){
     const zh=statusZh(status);
+    if(window.STATE618_I18N)return window.STATE618_I18N.translate(status,zh);
     const mode=language();
     return mode==='zh'?zh:mode==='en'?status:zh+' / '+status;
   }
@@ -171,9 +172,11 @@
     }
     const mode=language();
     historyList.innerHTML=history.map(function(item){
-      const action=mode==='en'?(item.actionEn||item.actionZh):
-        mode==='zh'?(item.actionZh||item.actionEn):
-        (item.actionZh||'')+(item.actionEn?' / '+item.actionEn:'');
+      const action=(mode!=='bi'&&mode!=='zh'&&mode!=='en')
+        ? (window.STATE618_I18N?window.STATE618_I18N.translate(item.actionEn||item.actionZh,item.actionZh||item.actionEn):(item.actionEn||item.actionZh))
+        : mode==='en'?(item.actionEn||item.actionZh):
+          mode==='zh'?(item.actionZh||item.actionEn):
+          (item.actionZh||'')+(item.actionEn?' / '+item.actionEn:'');
       return '<div class="history-item"><div><strong>'+escapeHtml(item.operator||'—')+
         '</strong><span>'+escapeHtml(item.alliance||'')+'</span></div><p>'+escapeHtml(action)+
         '</p><time>'+escapeHtml(item.stamp||'')+'</time></div>';

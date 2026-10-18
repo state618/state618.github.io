@@ -494,3 +494,12 @@ h1 {
   margin-top:5px;
   padding-top:10px;
 }
+
+/* Multilingual selector expansion */
+.language-menu{
+  max-height:min(68vh,460px);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+}
+.language-option{white-space:nowrap}

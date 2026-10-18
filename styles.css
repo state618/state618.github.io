@@ -435,9 +435,26 @@ h1 {
   }
 }
 
-.manager-entry{margin-top:16px}
-.manager-entry a{color:rgba(232,222,233,.72);text-decoration:none;font-size:12px;letter-spacing:.04em;border-bottom:1px solid rgba(232,222,233,.20);padding-bottom:3px}
-.manager-entry a:hover{color:var(--accent-soft);border-bottom-color:rgba(234,208,223,.55)}
+.manager-entry{margin-top:18px}
+.manager-entry a{
+  display:inline-block;
+  color:rgba(238,228,239,.84);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.035em;
+  padding:8px 12px;
+  border:1px solid rgba(232,222,233,.22);
+  border-radius:5px;
+  background:rgba(16,13,18,.34);
+  transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;
+}
+.manager-entry a:hover{
+  color:var(--accent-soft);
+  border-color:rgba(234,208,223,.50);
+  background:rgba(200,137,184,.10);
+  transform:translateY(-1px);
+}
 
 /* Shared language selector */
 .language-switcher{

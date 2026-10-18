@@ -513,3 +513,9 @@ textarea {
   font-size:11px;
   line-height:1.55;
 }
+
+.applicant-info-request{display:grid;gap:6px;margin:14px 0;padding:14px 15px;border-left:4px solid rgba(194,128,186,.92);background:rgba(194,128,186,.09);border-radius:6px}
+.applicant-info-request b{color:#f2d7ef;font-size:14px}
+.applicant-info-request strong{color:#fff;font-size:13px}
+.applicant-info-request span{color:#d4c6d3;font-size:13px;line-height:1.55}
+.applicant-info-request small{color:#9f939f;font-size:11px;line-height:1.45}

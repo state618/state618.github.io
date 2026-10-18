@@ -18,6 +18,12 @@
   const operatorError=document.getElementById('operator-error');
   const saveButton=document.getElementById('save-review-button');
   const requestInfoButton=document.getElementById('request-info-button');
+  const requestInfoModal=document.getElementById('request-info-modal');
+  const requestInfoMessage=document.getElementById('request-info-message');
+  const requestInfoCancel=document.getElementById('request-info-cancel');
+  const requestInfoConfirm=document.getElementById('request-info-confirm');
+  const infoRequestSummary=document.getElementById('info-request-summary');
+  const infoRequestSummaryText=document.getElementById('info-request-summary-text');
   const historyList=document.getElementById('activity-history-list');
   const statusSelect=detail?detail.querySelector('.manager-field select'):null;
   const notesField=detail?detail.querySelector('.manager-field textarea'):null;
@@ -216,6 +222,18 @@
         :'此申請標示有同行成員，但尚未建立團隊碼。';
     }
 
+    if(infoRequestSummary&&infoRequestSummaryText){
+      const req=app.infoRequest;
+      const pending=Boolean(req&&req.pending);
+      infoRequestSummary.hidden=!pending;
+      if(pending){
+        const parts=[];
+        if(req.categories)parts.push(req.categories);
+        if(req.message)parts.push(req.message);
+        infoRequestSummaryText.textContent=parts.join('｜')||'已送出補件要求。';
+      }
+    }
+
     if(statusSelect)statusSelect.value=app.status||'Under Review';
     if(notesField)notesField.value=app.internalNotes||'';
     renderHistory(app);
@@ -253,6 +271,12 @@
     if(action==='save'){
       params.set('status',statusSelect?statusSelect.value:'Under Review');
       params.set('internalNotes',notesField?notesField.value:'');
+    } else if(action==='requestInfo'){
+      const checked=requestInfoModal
+        ? [...requestInfoModal.querySelectorAll('.request-info-option input:checked')].map(el=>el.value)
+        : [];
+      params.set('requestCategories',checked.join('、'));
+      params.set('requestMessage',requestInfoMessage?requestInfoMessage.value.trim():'');
     }
 
     const button=action==='save'?saveButton:requestInfoButton;
@@ -269,6 +293,11 @@
       if(!data.ok)throw new Error(data.message||'Update failed');
       const index=applications.findIndex(a=>String(a.rowNumber)===String(app.rowNumber));
       if(index>=0)applications[index]=data.application;
+      if(action==='requestInfo'&&requestInfoModal){
+        requestInfoModal.hidden=true;
+        requestInfoModal.querySelectorAll('.request-info-option input').forEach(el=>{el.checked=false;});
+        if(requestInfoMessage)requestInfoMessage.value='';
+      }
       renderAll();
     }catch(err){
       alert('儲存失敗：'+err.message);
@@ -328,7 +357,19 @@
 
   if(filter)filter.addEventListener('change',renderQueue);
   if(saveButton)saveButton.addEventListener('click',function(){updateApplication('save');});
-  if(requestInfoButton)requestInfoButton.addEventListener('click',function(){updateApplication('requestInfo');});
+  if(requestInfoButton)requestInfoButton.addEventListener('click',function(){
+    if(!requireOperator())return;
+    if(requestInfoModal)requestInfoModal.hidden=false;
+  });
+  if(requestInfoCancel)requestInfoCancel.addEventListener('click',function(){
+    if(requestInfoModal)requestInfoModal.hidden=true;
+  });
+  if(requestInfoModal)requestInfoModal.addEventListener('click',function(event){
+    if(event.target===requestInfoModal)requestInfoModal.hidden=true;
+  });
+  if(requestInfoConfirm)requestInfoConfirm.addEventListener('click',function(){
+    updateApplication('requestInfo');
+  });
   if(operatorName)operatorName.addEventListener('input',function(){
     if(operatorName.value.trim()&&operatorError)operatorError.hidden=true;
   });

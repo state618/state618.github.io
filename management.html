@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#151018">
   <title>STATE 618 | Alliance Management</title>
   <link rel="stylesheet" href="styles.css?v=20261017-2305">
-  <link rel="stylesheet" href="management.css?v=20261017-2305">
+  <link rel="stylesheet" href="management.css?v=20261018-2025">
 </head>
 <body class="management-page">
   <div class="management-bg"></div>
@@ -151,6 +151,11 @@
             <span data-i18n-zh="這筆申請需要先向申請者索取同行名單。" data-i18n-en="Ask the applicant for the group member list before continuing.">這筆申請需要先向申請者索取同行名單。</span>
           </div>
 
+          <div class="info-request-summary" id="info-request-summary" hidden>
+            <strong>等待申請者補資料 / Waiting for applicant update</strong>
+            <span id="info-request-summary-text"></span>
+          </div>
+
           <div class="manager-field responsible-alliance-field">
             <span data-i18n-zh="負責聯盟" data-i18n-en="Responsible Alliance">負責聯盟 / Responsible Alliance</span>
             <strong id="responsible-alliance">3311</strong>
@@ -196,9 +201,27 @@
     </section>
   </main>
 
+  <div class="request-info-modal" id="request-info-modal" hidden>
+    <div class="request-info-dialog" role="dialog" aria-modal="true" aria-labelledby="request-info-title">
+      <h3 id="request-info-title">要求補資料 / Request More Information</h3>
+      <p>選擇需要申請者補充的內容，可另外留下說明。這不會改變目前審核狀態。</p>
+      <div class="request-info-options">
+        <label class="request-info-option"><input type="checkbox" value="團隊／同行資料 / Group members"> <span>團隊／同行資料 / Group members</span></label>
+        <label class="request-info-option"><input type="checkbox" value="Player ID／基本資料 / Player ID or profile"> <span>Player ID／基本資料 / Player ID or profile</span></label>
+        <label class="request-info-option"><input type="checkbox" value="戰力／擊殺資料 / Power or kills"> <span>戰力／擊殺資料 / Power or kills</span></label>
+        <label class="request-info-option"><input type="checkbox" value="其他 / Other"> <span>其他 / Other</span></label>
+      </div>
+      <textarea id="request-info-message" placeholder="補充說明 / Additional message"></textarea>
+      <div class="request-info-actions">
+        <button class="ghost-button" id="request-info-cancel" type="button">取消 / Cancel</button>
+        <button class="save-button" id="request-info-confirm" type="button">送出補件要求 / Send Request</button>
+      </div>
+    </div>
+  </div>
+
   <audio id="site-bgm" src="audio/bgm.mp3" preload="auto" autoplay loop></audio>
   <script src="site.js?v=20261015-1335"></script>
-  <script src="management.js?v=20261018-0645"></script>
+  <script src="management.js?v=20261018-2015"></script>
   <script src="language.js?v=20261017-2305"></script>
 </body>
 </html>

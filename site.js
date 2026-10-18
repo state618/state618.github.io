@@ -138,6 +138,7 @@ function setSubmitMessage(text, type = '') {
       row('玩家名稱 / Player', escapeHtml(data.playerName)),
       row('希望聯盟 / Preferred Alliance', escapeHtml(data.preferredAlliance || '—')),
       data.groupCode ? row('團隊邀請碼 / Group Invite Code', escapeHtml(data.groupCode)) : '',
+      data.infoRequest && data.infoRequest.pending ? infoRequestBlock(data.infoRequest) : '',
       row('狀態 / Status', '<span class="badge ' + statusClass(data.status) + '">' + escapeHtml(statusLabel(data.status)) + '</span>'),
       row('送出時間 / Submitted', escapeHtml(data.submittedAt || '—')),
       row('最後更新 / Last Updated', escapeHtml(data.lastUpdated || '—')),
@@ -148,6 +149,15 @@ function setSubmitMessage(text, type = '') {
   function renderStatusError(message) {
     result.hidden = false;
     result.innerHTML = '<div class="status-error">' + escapeHtml(message) + '</div>';
+  }
+
+  function infoRequestBlock(request) {
+    const details = [];
+    if (request.categories) details.push('<strong>' + escapeHtml(request.categories) + '</strong>');
+    if (request.message) details.push('<span>' + escapeHtml(request.message) + '</span>');
+    return '<div class="applicant-info-request"><b>需要補充資料 / More Information Needed</b>' +
+      (details.length ? details.join('') : '<span>請聯繫 618 管理人員確認需要補充的內容。</span>') +
+      '<small>你的審核狀態不會因補件要求而改變。</small></div>';
   }
 
   function row(label, value) {

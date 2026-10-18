@@ -9,6 +9,52 @@ function setSubmitMessage(text, type = '') {
   el.className = 'submit-result ' + type;
 }
 
+function groupCodeCard(code, shareUrl = '') {
+  const safeCode = escapeHtml(code);
+  const safeUrl = escapeHtml(shareUrl);
+  return '<div class="group-code-card">' +
+    '<span class="group-code-eyebrow">團隊邀請碼 / Group Invite Code</span>' +
+    '<strong class="group-code-value">' + safeCode + '</strong>' +
+    '<p>請把這組邀請碼分享給同行成員，每位成員都要各自填寫申請。<br>' +
+    'Share this code with your group members. Each member must submit their own application.</p>' +
+    '<div class="group-code-actions">' +
+      '<button type="button" class="group-copy-button" data-copy-value="' + safeCode + '">複製邀請碼 / Copy Code</button>' +
+      (shareUrl ? '<button type="button" class="group-copy-button" data-copy-value="' + safeUrl + '">複製邀請連結 / Copy Link</button>' : '') +
+    '</div>' +
+    (shareUrl ? '<a class="group-share-link" href="' + safeUrl + '">' + safeUrl + '</a>' : '') +
+  '</div>';
+}
+
+function wireCopyButtons(root) {
+  if (!root) return;
+  root.querySelectorAll('[data-copy-value]').forEach(button => {
+    if (button.dataset.copyBound === '1') return;
+    button.dataset.copyBound = '1';
+    button.addEventListener('click', async () => {
+      const value = button.dataset.copyValue || '';
+      const original = button.textContent;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(value);
+        } else {
+          const temp = document.createElement('textarea');
+          temp.value = value;
+          temp.style.position = 'fixed';
+          temp.style.opacity = '0';
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          temp.remove();
+        }
+        button.textContent = '已複製 / Copied';
+        setTimeout(() => { button.textContent = original; }, 1200);
+      } catch (error) {
+        console.error('Copy failed:', error);
+      }
+    });
+  });
+}
+
 (function setupApplicationForm() {
   const form = document.getElementById('survey-form');
   if (!form) return;
@@ -58,10 +104,8 @@ function setSubmitMessage(text, type = '') {
             const shareUrl = new URL('apply.html', window.location.href);
             shareUrl.searchParams.set('group', data.groupCode);
             successHtml =
-              '已收到申請 / Application received.<br>' +
-              '<strong>團隊邀請碼 / Group Invite Code：' + escapeHtml(data.groupCode) + '</strong><br>' +
-              '請把這組邀請碼或下方連結分享給同行成員，每位成員都要各自填寫申請。<br>' +
-              '<a href="' + escapeHtml(shareUrl.href) + '">' + escapeHtml(shareUrl.href) + '</a>';
+              '<div class="submit-success-title">已收到申請 / Application received.</div>' +
+              groupCodeCard(data.groupCode, shareUrl.href);
           }
         }
       }
@@ -74,6 +118,7 @@ function setSubmitMessage(text, type = '') {
     if (result) {
       result.innerHTML = successHtml;
       result.className = 'submit-result success';
+      wireCopyButtons(result);
     }
     submittedPlayerId = '';
   });
@@ -137,13 +182,14 @@ function setSubmitMessage(text, type = '') {
       row('Player ID', escapeHtml(data.playerId)),
       row('玩家名稱 / Player', escapeHtml(data.playerName)),
       row('希望聯盟 / Preferred Alliance', escapeHtml(data.preferredAlliance || '—')),
-      data.groupCode ? row('團隊邀請碼 / Group Invite Code', escapeHtml(data.groupCode)) : '',
+      data.groupCode ? groupCodeCard(data.groupCode) : '',
       data.infoRequest && data.infoRequest.pending ? infoRequestBlock(data.infoRequest) : '',
       row('狀態 / Status', '<span class="badge ' + statusClass(data.status) + '">' + escapeHtml(statusLabel(data.status)) + '</span>'),
       row('送出時間 / Submitted', escapeHtml(data.submittedAt || '—')),
       row('最後更新 / Last Updated', escapeHtml(data.lastUpdated || '—')),
       '<div class="status-note">' + escapeHtml(statusMessage(data.status)) + '</div>'
     ].join('');
+    wireCopyButtons(result);
   }
 
   function renderStatusError(message) {

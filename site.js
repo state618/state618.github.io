@@ -182,14 +182,66 @@ function wireCopyButtons(root) {
       row('Player ID', escapeHtml(data.playerId)),
       row('玩家名稱 / Player', escapeHtml(data.playerName)),
       row('希望聯盟 / Preferred Alliance', escapeHtml(data.preferredAlliance || '—')),
+      data.chosenAlliance ? row('已選擇聯盟 / Chosen Alliance', escapeHtml(data.chosenAlliance)) : '',
       data.groupCode ? groupCodeCard(data.groupCode) : '',
       data.infoRequest && data.infoRequest.pending ? infoRequestBlock(data.infoRequest) : '',
+      offerChoiceBlock(data),
       row('狀態 / Status', '<span class="badge ' + statusClass(data.status) + '">' + escapeHtml(statusLabel(data.status)) + '</span>'),
       row('送出時間 / Submitted', escapeHtml(data.submittedAt || '—')),
       row('最後更新 / Last Updated', escapeHtml(data.lastUpdated || '—')),
       '<div class="status-note">' + escapeHtml(statusMessage(data.status)) + '</div>'
     ].join('');
     wireCopyButtons(result);
+    wireAllianceChoiceButtons(result, data.playerId);
+  }
+
+  function offerChoiceBlock(data) {
+    if (!data || data.chosenAlliance || !data.openPreference) return '';
+    const offers = Array.isArray(data.allianceOffers) ? data.allianceOffers : [];
+    if (!offers.length) {
+      return '<div class="alliance-offer-box waiting"><b>聯盟接收意願 / Alliance Offers</b><span>目前還沒有聯盟送出接收意願，請稍後再查詢。</span></div>';
+    }
+    return '<div class="alliance-offer-box"><b>願意接收你的聯盟 / Alliances Ready to Accept You</b>' +
+      '<span>你可以從下列聯盟中自行選擇。確認後將完成聯盟歸屬。</span>' +
+      '<div class="alliance-offer-list">' +
+      offers.map(function(offer){
+        return '<button type="button" class="alliance-choice-button" data-alliance="' +
+          escapeHtml(offer.alliance) + '">' + escapeHtml(offer.label) + '</button>';
+      }).join('') +
+      '</div></div>';
+  }
+
+  function wireAllianceChoiceButtons(root, playerId) {
+    if (!root) return;
+    root.querySelectorAll('.alliance-choice-button').forEach(function(choiceButton) {
+      choiceButton.addEventListener('click', async function() {
+        const alliance = choiceButton.dataset.alliance || '';
+        if (!alliance) return;
+        const label = choiceButton.textContent || alliance;
+        if (!window.confirm('確認選擇 ' + label + '？\nConfirm this alliance?')) return;
+
+        root.querySelectorAll('.alliance-choice-button').forEach(btn => { btn.disabled = true; });
+        const oldText = choiceButton.textContent;
+        choiceButton.textContent = '確認中… / Confirming…';
+
+        try {
+          const params = new URLSearchParams();
+          params.set('action', 'applicantChooseAlliance');
+          params.set('playerId', playerId);
+          params.set('alliance', alliance);
+          const response = await fetch(WEB_APP_URL, { method: 'POST', body: params });
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+          const data = await response.json();
+          if (!data.ok) throw new Error(data.message || 'Unable to choose alliance.');
+          renderStatus(data);
+        } catch (error) {
+          console.error('Alliance choice failed:', error);
+          alert('選擇聯盟失敗，請重新查詢後再試。 / Unable to confirm alliance.');
+          root.querySelectorAll('.alliance-choice-button').forEach(btn => { btn.disabled = false; });
+          choiceButton.textContent = oldText;
+        }
+      });
+    });
   }
 
   function renderStatusError(message) {

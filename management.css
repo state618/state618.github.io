@@ -77,3 +77,10 @@
 .info-request-summary{display:grid;gap:5px;margin-bottom:20px;padding:13px 14px;border-left:4px solid rgba(194,128,186,.9);background:rgba(194,128,186,.08)}
 .info-request-summary strong{color:#eed0eb;font-size:14px}
 .info-request-summary span{color:#bfaabe;font-size:12px;line-height:1.5}
+
+.shared-offer-panel{display:grid;gap:8px;margin-bottom:20px;padding:15px 16px;border:1px solid rgba(230,170,104,.34);border-left:4px solid rgba(230,170,104,.92);border-radius:8px;background:rgba(230,170,104,.08)}
+.shared-offer-panel[hidden]{display:none}
+.shared-offer-panel strong{color:#f3d0aa;font-size:15px}
+.shared-offer-panel span{color:#c6b8aa;font-size:12px;line-height:1.55}
+.shared-offer-panel .save-button{margin-top:4px}
+.applicant-card.shared-candidate::after{content:"SHARED";position:absolute;right:12px;bottom:10px;color:#d5a973;font-size:9px;font-weight:900;letter-spacing:.08em}

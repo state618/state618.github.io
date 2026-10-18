@@ -537,3 +537,12 @@ textarea {
   .group-code-actions{display:grid;grid-template-columns:1fr}
   .group-copy-button{width:100%}
 }
+
+.alliance-offer-box{display:grid;gap:9px;margin:18px 0;padding:16px 17px;border:1px solid rgba(230,170,104,.30);border-left:4px solid rgba(230,170,104,.88);border-radius:8px;background:rgba(230,170,104,.07)}
+.alliance-offer-box b{color:#f0cfaa;font-size:15px}
+.alliance-offer-box span{color:#c7bbc7;font-size:12px;line-height:1.55}
+.alliance-offer-box.waiting{border-left-color:rgba(200,137,184,.72);background:rgba(200,137,184,.06)}
+.alliance-offer-list{display:grid;gap:9px;margin-top:5px}
+.alliance-choice-button{width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:#171218;color:#f5eff5;font:inherit;font-size:13px;font-weight:800;text-align:left;cursor:pointer}
+.alliance-choice-button:hover{border-color:rgba(230,170,104,.55);background:#211817}
+.alliance-choice-button:disabled{opacity:.58;cursor:wait}

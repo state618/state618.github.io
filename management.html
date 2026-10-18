@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#151018">
   <title>STATE 618 | Alliance Management</title>
   <link rel="stylesheet" href="styles.css?v=20261017-2305">
-  <link rel="stylesheet" href="management.css?v=20261018-2025">
+  <link rel="stylesheet" href="management.css?v=20261018-2245">
 </head>
 <body class="management-page">
   <div class="management-bg"></div>
@@ -25,11 +25,11 @@
       <div class="login-copy">
         <div class="section-kicker" data-i18n-zh="聯盟管理" data-i18n-en="ALLIANCE MANAGEMENT">聯盟管理 / ALLIANCE MANAGEMENT</div>
         <h1 data-i18n-zh="移民申請審核後台" data-i18n-en="Migration Review Console">移民申請審核後台 / Migration Review Console</h1>
-        <p class="manager-intro" data-i18n-zh="聯盟管理者登入後，只會看到指定自己聯盟的申請資料。" data-i18n-en="Authorized alliance managers can review only applications assigned to their own alliance.">聯盟管理者登入後，只會看到指定自己聯盟的申請資料。 / Authorized alliance managers can review only applications assigned to their own alliance.</p>
+        <p class="manager-intro" data-i18n-zh="聯盟管理者會看到指定自己聯盟的申請，以及尚未決定聯盟的共享候選人。" data-i18n-en="Alliance managers can review applicants assigned to their alliance and shared candidates who have not chosen an alliance yet.">聯盟管理者會看到指定自己聯盟的申請，以及尚未決定聯盟的共享候選人。 / Alliance managers can review assigned applicants and shared candidates.</p>
 
         <div class="privacy-note">
           <strong data-i18n-zh="聯盟資料獨立顯示" data-i18n-en="Alliance-scoped access">聯盟資料獨立顯示 / Alliance-scoped access</strong>
-          <span data-i18n-zh="只顯示指定此聯盟的申請者，不會看到其他聯盟資料。" data-i18n-en="Only applicants assigned to this alliance are shown. Other alliances remain private.">只顯示指定此聯盟的申請者，不會看到其他聯盟資料。 / Only applicants assigned to this alliance are shown.</span>
+          <span data-i18n-zh="指定聯盟的申請仍維持聯盟隔離；只有選擇「不限／尚未決定」的申請會進入所有聯盟可見的共享候選池。" data-i18n-en="Alliance-specific applications remain private. Only No preference / Not sure yet applications enter the shared candidate pool.">指定聯盟的申請仍維持聯盟隔離；只有「不限／尚未決定」會進入共享候選池。 / Alliance-specific applications remain private; open candidates are shared.</span>
         </div>
       </div>
 
@@ -156,6 +156,12 @@
             <span id="info-request-summary-text"></span>
           </div>
 
+          <div class="shared-offer-panel" id="shared-offer-panel" hidden>
+            <strong>共享候選人 / Shared Candidate</strong>
+            <span>此申請者尚未決定聯盟。若你的聯盟願意接收，送出 Offer 後申請者會在查詢頁看到並自行選擇。</span>
+            <button class="save-button" id="alliance-offer-button" type="button">願意接收 / Send Offer</button>
+          </div>
+
           <div class="manager-field responsible-alliance-field">
             <span data-i18n-zh="負責聯盟" data-i18n-en="Responsible Alliance">負責聯盟 / Responsible Alliance</span>
             <strong id="responsible-alliance">3311</strong>
@@ -166,7 +172,7 @@
             <small class="operator-error" id="operator-error" hidden data-i18n-zh="請先填寫操作者名稱。" data-i18n-en="Operator name is required.">請先填寫操作者名稱。 / Operator name is required.</small>
           </label>
 
-          <label class="manager-field"><span data-i18n-zh="申請狀態" data-i18n-en="Status">申請狀態 / Status</span>
+          <label class="manager-field" id="review-status-field"><span data-i18n-zh="申請狀態" data-i18n-en="Status">申請狀態 / Status</span>
             <select>
               <option value="Under Review" data-i18n-zh="審核中" data-i18n-en="Under Review">審核中 / Under Review</option>
               <option value="Approved" data-i18n-zh="已通過" data-i18n-en="Approved">已通過 / Approved</option>
@@ -175,11 +181,11 @@
             </select>
           </label>
 
-          <label class="manager-field"><span data-i18n-zh="內部備註" data-i18n-en="Internal Notes">內部備註 / Internal Notes</span>
+          <label class="manager-field" id="internal-notes-field"><span data-i18n-zh="內部備註" data-i18n-en="Internal Notes">內部備註 / Internal Notes</span>
             <textarea data-placeholder-zh="只有聯盟管理者看得到" data-placeholder-en="Visible to alliance management only" placeholder="只有聯盟管理者看得到 / Visible to alliance management only"></textarea>
           </label>
 
-          <div class="detail-actions">
+          <div class="detail-actions" id="standard-review-actions">
             <button class="ghost-button" id="request-info-button" type="button" data-i18n-zh="要求補資料" data-i18n-en="Request More Information">要求補資料 / Request More Information</button>
             <button class="save-button" id="save-review-button" type="button" data-i18n-zh="儲存審核" data-i18n-en="Save Review">儲存審核 / Save Review</button>
           </div>
@@ -221,7 +227,7 @@
 
   <audio id="site-bgm" src="audio/bgm.mp3" preload="auto" autoplay loop></audio>
   <script src="site.js?v=20261015-1335"></script>
-  <script src="management.js?v=20261018-2015"></script>
+  <script src="management.js?v=20261018-2245"></script>
   <script src="language.js?v=20261017-2305"></script>
 </body>
 </html>

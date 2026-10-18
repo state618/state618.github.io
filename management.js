@@ -25,8 +25,13 @@
   const infoRequestSummary=document.getElementById('info-request-summary');
   const infoRequestSummaryText=document.getElementById('info-request-summary-text');
   const historyList=document.getElementById('activity-history-list');
-  const statusSelect=detail?detail.querySelector('.manager-field select'):null;
-  const notesField=detail?detail.querySelector('.manager-field textarea'):null;
+  const sharedOfferPanel=document.getElementById('shared-offer-panel');
+  const allianceOfferButton=document.getElementById('alliance-offer-button');
+  const reviewStatusField=document.getElementById('review-status-field');
+  const internalNotesField=document.getElementById('internal-notes-field');
+  const standardReviewActions=document.getElementById('standard-review-actions');
+  const statusSelect=detail?detail.querySelector('#review-status-field select'):null;
+  const notesField=detail?detail.querySelector('#internal-notes-field textarea'):null;
 
   const allianceNames={
     RZN:'Risen','3311':'青丘寨',RoD:'Reign of Dragons',RAW:'War Dominion',
@@ -131,7 +136,8 @@
     const groupInfo=app.groupCode
       ? ((app.groupSize||'同行')+' · '+app.groupCode)
       : (app.groupSize||'單人');
-    return '<button class="applicant-card'+active+'" type="button" data-row="'+escapeHtml(app.rowNumber)+'">'+
+    const shared=app.sharedCandidate&&!app.chosenAlliance?' shared-candidate':'';
+    return '<button class="applicant-card'+active+shared+'" type="button" data-row="'+escapeHtml(app.rowNumber)+'">'+
       '<div class="applicant-top"><strong>'+escapeHtml(app.playerName||'—')+'</strong>'+
       '<span class="badge '+statusClass(app.status)+'">'+escapeHtml(statusText(app.status))+'</span></div>'+
       '<div class="applicant-meta">'+escapeHtml((app.currentState||'—')+'州 · '+(app.currentAlliance||'無聯盟')+' · 戰力 '+compactNumber(app.totalPower))+'</div>'+
@@ -234,6 +240,19 @@
       }
     }
 
+    const sharedOpen=Boolean(app.sharedCandidate&&!app.chosenAlliance);
+    if(sharedOfferPanel)sharedOfferPanel.hidden=!sharedOpen;
+    if(reviewStatusField)reviewStatusField.hidden=sharedOpen;
+    if(internalNotesField)internalNotesField.hidden=sharedOpen;
+    if(standardReviewActions)standardReviewActions.hidden=sharedOpen;
+    if(responsibleAlliance)responsibleAlliance.textContent=sharedOpen?'共享候選池 / Shared Pool':(app.chosenAllianceLabel||allianceTags[currentAlliance]||currentAlliance);
+
+    if(allianceOfferButton){
+      allianceOfferButton.textContent=app.currentAllianceOffer?'撤回接收意願 / Withdraw Offer':'願意接收 / Send Offer';
+      allianceOfferButton.classList.toggle('ghost-button',Boolean(app.currentAllianceOffer));
+      allianceOfferButton.classList.toggle('save-button',!app.currentAllianceOffer);
+    }
+
     if(statusSelect)statusSelect.value=app.status||'Under Review';
     if(notesField)notesField.value=app.internalNotes||'';
     renderHistory(app);
@@ -279,7 +298,9 @@
       params.set('requestMessage',requestInfoMessage?requestInfoMessage.value.trim():'');
     }
 
-    const button=action==='save'?saveButton:requestInfoButton;
+    const button=action==='save'?saveButton:
+      action==='requestInfo'?requestInfoButton:
+      allianceOfferButton;
     const oldText=button?button.textContent:'';
     if(button){
       button.disabled=true;
@@ -357,6 +378,11 @@
 
   if(filter)filter.addEventListener('change',renderQueue);
   if(saveButton)saveButton.addEventListener('click',function(){updateApplication('save');});
+  if(allianceOfferButton)allianceOfferButton.addEventListener('click',function(){
+    const app=selectedApplication();
+    if(!app)return;
+    updateApplication(app.currentAllianceOffer?'withdrawOffer':'offer');
+  });
   if(requestInfoButton)requestInfoButton.addEventListener('click',function(){
     if(!requireOperator())return;
     if(requestInfoModal)requestInfoModal.hidden=false;

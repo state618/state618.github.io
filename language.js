@@ -223,6 +223,46 @@
   };
   Object.keys(PAGE_T).forEach((lang) => Object.assign(T[lang], PAGE_T[lang]));
 
+  const HERO_T = {
+    ja: {
+      'Migration Survey · Open':'移民調査 · 受付中','COMMUNITY MIGRATION PAGE':'コミュニティ移民ページ','Migration Interest Survey':'移民意向調査',
+      "State 618 is preparing for the next migration phase. If you're considering joining us, we'd love to hear from you.":'State 618は次の移民フェーズを準備しています。参加を検討している方は、ぜひご意向をお知らせください。',
+      'Apply Now':'申請する','Alliance Management →':'同盟管理 →','Interest survey only — not a final admission or migration-slot confirmation.':'この移民意向調査は事前評価用であり、最終承認や移民枠の確定を意味するものではありません。',
+      '↓ How it works':'↓ 申請の流れ'
+    },
+    ko: {
+      'Migration Survey · Open':'이민 조사 · 접수 중','COMMUNITY MIGRATION PAGE':'커뮤니티 이민 페이지','Migration Interest Survey':'이민 의향 조사',
+      "State 618 is preparing for the next migration phase. If you're considering joining us, we'd love to hear from you.":'State 618은 다음 이민 단계를 준비하고 있습니다. 합류를 고려 중이라면 여러분의 의향을 알려 주세요.',
+      'Apply Now':'신청하기','Alliance Management →':'연맹 관리 →','Interest survey only — not a final admission or migration-slot confirmation.':'이민 의향 조사는 사전 평가용이며 최종 승인이나 이민 슬롯 확정을 의미하지 않습니다.',
+      '↓ How it works':'↓ 신청 절차'
+    },
+    es: {
+      'Migration Survey · Open':'Encuesta migratoria · Abierta','COMMUNITY MIGRATION PAGE':'PÁGINA COMUNITARIA DE MIGRACIÓN','Migration Interest Survey':'Encuesta de interés migratorio',
+      "State 618 is preparing for the next migration phase. If you're considering joining us, we'd love to hear from you.":'El Estado 618 se está preparando para la próxima fase de migración. Si estás pensando en unirte, nos gustaría conocer tu interés.',
+      'Apply Now':'Solicitar ahora','Alliance Management →':'Gestión de alianza →','Interest survey only — not a final admission or migration-slot confirmation.':'Esta encuesta de interés es solo para una evaluación inicial y no confirma la admisión final ni una plaza de migración.',
+      '↓ How it works':'↓ Cómo funciona'
+    },
+    pt: {
+      'Migration Survey · Open':'Pesquisa de migração · Aberta','COMMUNITY MIGRATION PAGE':'PÁGINA DA COMUNIDADE DE MIGRAÇÃO','Migration Interest Survey':'Pesquisa de interesse em migração',
+      "State 618 is preparing for the next migration phase. If you're considering joining us, we'd love to hear from you.":'O Estado 618 está se preparando para a próxima fase de migração. Se você pensa em se juntar a nós, queremos saber do seu interesse.',
+      'Apply Now':'Inscrever-se agora','Alliance Management →':'Gestão da aliança →','Interest survey only — not a final admission or migration-slot confirmation.':'Esta pesquisa de interesse serve apenas para avaliação inicial e não confirma aprovação final nem vaga de migração.',
+      '↓ How it works':'↓ Como funciona'
+    },
+    fr: {
+      'Migration Survey · Open':'Enquête de migration · Ouverte','COMMUNITY MIGRATION PAGE':'PAGE COMMUNAUTAIRE DE MIGRATION','Migration Interest Survey':'Enquête d’intérêt pour la migration',
+      "State 618 is preparing for the next migration phase. If you're considering joining us, we'd love to hear from you.":'L’État 618 prépare la prochaine phase de migration. Si vous envisagez de nous rejoindre, nous aimerions connaître votre intérêt.',
+      'Apply Now':'Postuler maintenant','Alliance Management →':'Gestion d’alliance →','Interest survey only — not a final admission or migration-slot confirmation.':'Cette enquête sert uniquement à une évaluation préliminaire et ne confirme ni l’admission finale ni une place de migration.',
+      '↓ How it works':'↓ Comment ça marche'
+    },
+    de: {
+      'Migration Survey · Open':'Migrationsumfrage · Offen','COMMUNITY MIGRATION PAGE':'COMMUNITY-MIGRATIONSSEITE','Migration Interest Survey':'Umfrage zum Migrationsinteresse',
+      "State 618 is preparing for the next migration phase. If you're considering joining us, we'd love to hear from you.":'State 618 bereitet die nächste Migrationsphase vor. Wenn du einen Beitritt erwägst, möchten wir gerne von deinem Interesse erfahren.',
+      'Apply Now':'Jetzt bewerben','Alliance Management →':'Allianzverwaltung →','Interest survey only — not a final admission or migration-slot confirmation.':'Diese Interessenabfrage dient nur der Vorprüfung und bestätigt weder die endgültige Aufnahme noch einen Migrationsplatz.',
+      '↓ How it works':'↓ So funktioniert es'
+    }
+  };
+  Object.keys(HERO_T).forEach((lang) => Object.assign(T[lang], HERO_T[lang]));
+
   const han = /[\u3400-\u9fff]/;
   const splitNodes = [];
   const languageOnly = [];
@@ -240,7 +280,8 @@
     document.querySelectorAll('[data-i18n-zh][data-i18n-en]').forEach((el) => {
       const zh = el.dataset.i18nZh || '';
       const en = el.dataset.i18nEn || '';
-      el.textContent = translate(en, zh, mode);
+      const bi = el.dataset.i18nBi || '';
+      el.textContent = mode === 'bi' && bi ? bi : translate(en, zh, mode);
     });
 
     document.querySelectorAll('[data-placeholder-zh][data-placeholder-en]').forEach((el) => {
@@ -307,6 +348,14 @@
       else if (mode === 'zh') el.hidden = lang !== 'zh';
       else el.hidden = lang !== 'en';
     });
+
+    document.querySelectorAll('[data-bi-only]').forEach((el) => {
+      el.hidden = mode !== 'bi';
+    });
+
+    if (document.body.classList.contains('home-page') || document.querySelector('.hero')) {
+      document.title = 'STATE 618 | ' + translate('Migration Interest Survey', '移民意願調查', mode);
+    }
 
     document.querySelectorAll('.language-option').forEach((button) => {
       button.classList.toggle('active', button.dataset.language === mode);

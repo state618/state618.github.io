@@ -1,4 +1,5 @@
 const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwSZMVKwKpnsWP6gzwRaGSlGANhqId91BYd3kbo0gUqhIDCP-Lw5XrWVSZ1ZZWzrl3b/exec';
+const MIGRATION_SUBMISSIONS_OPEN = false;
 
 const backendReady = WEB_APP_URL.startsWith('https://script.google.com/macros/s/');
 
@@ -66,6 +67,14 @@ function wireCopyButtons(root) {
   const button = document.getElementById('submit-button');
   const frame = document.getElementById('submit-frame');
   let waitingForResponse = false;
+
+  if (!MIGRATION_SUBMISSIONS_OPEN) {
+    button.disabled = true;
+    button.textContent = '暫停收件 / Submissions Paused';
+    setSubmitMessage('本申請頁目前暫停收件，並保留作為備用。 / This application page is currently paused and retained as a backup.', 'muted');
+    form.addEventListener('submit', (event) => event.preventDefault());
+    return;
+  }
 
   if (!backendReady) {
     button.disabled = true;
